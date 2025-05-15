@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'bookings:list' %}">{% trans "My Bookings" %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans "Booking Details" %}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Event Details Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="position-relative">
+                    {% if booking.event.image %}
+                    <img src="{{ booking.event.image.url }}" class="card-img-top" alt="{{ booking.event.name }}" style="height: 300px; object-fit: cover;">
+                    {% else %}
+                    <img src="https://source.unsplash.com/random/800x300?{{ booking.event.category.name|lower }}" class="card-img-top" alt="{% trans 'Event Image' %}" style="height: 300px; object-fit: cover;">
+                    {% endif %}
+                    <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-3">
+                        <span class="badge bg-{{ booking.get_status_color }} px-3 py-2">
+                            {{ booking.get_status_display }}
+                        </span>
+                    </div>
+                    {% if booking.event.category %}
+                    <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} m-3">
+                        <span class="badge bg-primary">{{ booking.event.category.name }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-body p-4">
+                    <h2 class="card-title fw-bold mb-3">{{ booking.event.name }}</h2>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">
+                                    <i class="bi bi-calendar-event text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="mb-0 fw-bold">{% trans "Date" %}</p>
+                                    <p class="mb-0 text-muted">{{ booking.event.date|date:"F j, Y" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">
+                                    <i class="bi bi-clock text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="mb-0 fw-bold">{% trans "Time" %}</p>
+                                    <p class="mb-0 text-muted">{{ booking.event.date|date:"g:i A" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">
+                                    <i class="bi bi-geo-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="mb-0 fw-bold">{% trans "Venue" %}</p>
+                                    <p class="mb-0 text-muted">{{ booking.event.venue }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ booking.event.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Booking Info Card -->
+            <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 20px;">
+                <div class="card-header bg-primary text-white p-4 border-0">
+                    <h3 class="card-title fw-bold mb-0">{% trans "Booking Information" %}</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">{% trans "Booking Reference" %}</span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                                {{ booking.booking_reference }}
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">{% trans "Booking Date" %}</span>
+                            <span>{{ booking.created_at|date:"M d, Y" }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">{% trans "Number of Tickets" %}</span>
+                            <span>{{ booking.quantity }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">{% trans "Price per Ticket" %}</span>
+                            <span>${{ booking.event.price|floatformat:2 }}</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">{% trans "Total Amount" %}</span>
+                            <span class="fw-bold fs-4">${{ booking.total_price|floatformat:2 }}</span>
+                        </div>
+                    </div>
+
+                    {% if booking.can_be_cancelled %}
+                    <div class="d-grid">
+                        <a href="{% url 'bookings:cancel' booking_id=booking.id %}" class="btn btn-danger">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Cancel Booking" %}<i class="bi bi-x-circle ms-2"></i>
+                            {% else %}
+                                <i class="bi bi-x-circle me-2"></i>{% trans "Cancel Booking" %}
+                            {% endif %}
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer border-0 p-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check text-success fs-3 {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}"></i>
+                        <div>
+                            <span class="d-block fw-bold">{% trans "Booking Protected" %}</span>
+                            <span class="small text-muted">{% trans "Full refund up to 7 days before the event." %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

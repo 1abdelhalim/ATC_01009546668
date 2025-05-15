@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Booking Details -->
+            <div class="card border-0 shadow-lg mb-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="h4 mb-0 fw-bold">{% trans "Complete Your Booking" %}</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="position-relative rounded overflow-hidden shadow-sm" style="height: 180px;">
+                                {% if event.image %}
+                                <img src="{{ event.image.url }}" class="w-100 h-100 object-cover" alt="{{ event.name }}">
+                                {% elif event.name == "Summer Music Festival" %}
+                                <img src="/static/img/events/music-festival.jpg" class="w-100 h-100 object-cover" alt="{{ event.name }}">
+                                {% elif event.name == "Web Development Conference" %}
+                                <img src="/static/img/events/tech-conference.jpg" class="w-100 h-100 object-cover" alt="{{ event.name }}">
+                                {% elif event.name == "Startup Networking Event" %}
+                                <img src="/static/img/events/startup-networking.jpg" class="w-100 h-100 object-cover" alt="{{ event.name }}">
+                                {% else %}
+                                <img src="https://source.unsplash.com/random/600x400?{{ event.category.name|lower }}" class="w-100 h-100 object-cover" alt="{{ event.name }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="h5 fw-bold mb-2">{{ event.name }}</h3>
+                            
+                            <div class="d-flex align-items-center mb-2">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <small>{{ event.date|date:"F j, Y • g:i A" }}</small>
+                                    <i class="bi bi-calendar-event ms-2 text-primary"></i>
+                                {% else %}
+                                    <i class="bi bi-calendar-event me-2 text-primary"></i>
+                                    <small>{{ event.date|date:"F j, Y • g:i A" }}</small>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="d-flex align-items-center mb-2">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <small>{{ event.venue }}</small>
+                                    <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                                {% else %}
+                                    <i class="bi bi-geo-alt me-2 text-primary"></i>
+                                    <small>{{ event.venue }}</small>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="d-flex align-items-center mb-3">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <span class="badge bg-primary bg-opacity-10 text-primary p-2">{{ event.category.name }}</span>
+                                    <i class="bi bi-tag ms-2 text-primary"></i>
+                                {% else %}
+                                    <i class="bi bi-tag me-2 text-primary"></i>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary p-2">{{ event.category.name }}</span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="alert alert-info d-flex align-items-center small p-2 mb-0">
+                                <i class="bi bi-info-circle me-2"></i>
+                                <div>
+                                    {{ event.available_tickets }} {% trans "tickets left" %} / {{ event.capacity }} {% trans "total" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3 align-items-center mb-4">
+                            <div class="col-md-4">
+                                <label for="quantity" class="form-label fw-bold">{% trans "Number of Tickets" %}:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="quantity" name="quantity">
+                                    {% for i in "12345"|make_list %}
+                                        {% if forloop.counter <= event.available_tickets %}
+                                            <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-5 text-md-end">
+                                <span class="text-muted">{% trans "Price per ticket" %}:</span>
+                                <span class="fw-bold">${{ event.price|floatformat:2 }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                            <div>
+                                <span class="text-muted">{% trans "Total" %}:</span>
+                                <span class="h4 ms-2 fw-bold text-primary">${{ event.price|floatformat:2 }}</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'events:detail' slug=event.slug %}" class="btn btn-outline-secondary">
+                                    {% trans "Cancel" %}
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Confirm Booking" %}<i class="bi bi-check-circle ms-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-check-circle me-2"></i>{% trans "Confirm Booking" %}
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Event Details -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h3 class="h5 mb-0 fw-bold">{% trans "Event Details" %}</h3>
+                </div>
+                <div class="card-body p-4">
+                    <p>{{ event.description }}</p>
+                    
+                    <h4 class="h6 fw-bold mt-4 mb-3">{% trans "Important Information" %}</h4>
+                    <ul class="list-group list-group-flush mb-0">
+                        <li class="list-group-item px-0 d-flex">
+                            <i class="bi bi-info-circle me-3 text-primary"></i>
+                            <span>{% trans "Please arrive 15 minutes before the event starts." %}</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex">
+                            <i class="bi bi-info-circle me-3 text-primary"></i>
+                            <span>{% trans "Booking confirmation email will be sent to your registered email address." %}</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex">
+                            <i class="bi bi-info-circle me-3 text-primary"></i>
+                            <span>{% trans "Cancellations are available up to 24 hours before event start." %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    // Update total price when quantity changes
+    document.addEventListener('DOMContentLoaded', function() {
+        const quantitySelect = document.getElementById('quantity');
+        const pricePerTicket = parseFloat("{{ event.price|escapejs }}");
+        const totalPriceElement = document.querySelector('.text-primary.fw-bold');
+        
+        quantitySelect.addEventListener('change', function() {
+            const quantity = parseInt(this.value);
+            const totalPrice = (quantity * pricePerTicket).toFixed(2);
+            totalPriceElement.textContent = '$' + totalPrice;
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %} 
