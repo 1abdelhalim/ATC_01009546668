@@ -1,143 +1,150 @@
 /**
  * RTL Support Script for Event Booking System
- * Enhances the RTL layout for Arabic language
+ * Enhanced RTL layout support for Arabic language
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if the page is in RTL mode
     const isRTL = document.documentElement.dir === 'rtl';
     
     if (isRTL) {
-        // Fix Bootstrap spacing utility classes for RTL
-        fixBootstrapSpacingClasses();
-        
-        // Fix text alignment in specific elements
-        fixTextAlignment();
-        
-        // Fix icon orientations
-        fixIconOrientations();
+        enhanceRTLSupport();
+        fixBootstrapComponents();
+        setupRTLAnimations();
     }
     
-    // Handle language switcher links
     setupLanguageSwitcher();
     
-    /**
-     * Fix Bootstrap spacing utility classes for RTL
-     * Converts me-* to ms-* and vice versa
-     */
-    function fixBootstrapSpacingClasses() {
-        // Get all elements with Bootstrap margin classes
-        const elements = document.querySelectorAll('[class*="me-"], [class*="ms-"]');
+    function enhanceRTLSupport() {
+        // Fix text alignment
+        const textAlignElements = document.querySelectorAll('[class*="text-"]');
+        textAlignElements.forEach(el => {
+            if (el.classList.contains('text-start')) {
+                el.classList.replace('text-start', 'text-end');
+            } else if (el.classList.contains('text-end')) {
+                el.classList.replace('text-end', 'text-start');
+            }
+        });
         
-        elements.forEach(el => {
-            const classes = el.className.split(' ');
-            const newClasses = [];
-            
-            classes.forEach(cls => {
-                // Convert me-* to ms-* and vice versa
-                if (cls.match(/^me-[1-5]$/)) {
-                    const value = cls.split('-')[1];
-                    newClasses.push(`ms-${value}`);
-                } else if (cls.match(/^ms-[1-5]$/)) {
-                    const value = cls.split('-')[1];
-                    newClasses.push(`me-${value}`);
-                } else {
-                    newClasses.push(cls);
+        // Fix margins
+        const marginElements = document.querySelectorAll('[class*="me-"], [class*="ms-"]');
+        marginElements.forEach(el => {
+            el.classList.forEach(cls => {
+                if (cls.startsWith('me-')) {
+                    el.classList.replace(cls, `ms-${cls.slice(3)}`);
+                } else if (cls.startsWith('ms-')) {
+                    el.classList.replace(cls, `me-${cls.slice(3)}`);
                 }
             });
-            
-            el.className = newClasses.join(' ');
-        });
-    }
-    
-    /**
-     * Fix text alignment in specific elements
-     */
-    function fixTextAlignment() {
-        // Elements that should be right-aligned in RTL
-        const rightAlignSelectors = '.text-start, .text-left, .text-md-start, .text-md-left';
-        const rightAlignElements = document.querySelectorAll(rightAlignSelectors);
-        
-        rightAlignElements.forEach(el => {
-            el.classList.remove('text-start', 'text-left', 'text-md-start', 'text-md-left');
-            
-            if (el.classList.contains('text-md-start') || el.classList.contains('text-md-left')) {
-                el.classList.add('text-md-end');
-            } else {
-                el.classList.add('text-end');
-            }
         });
         
-        // Elements that should be left-aligned in RTL
-        const leftAlignSelectors = '.text-end, .text-right, .text-md-end, .text-md-right';
-        const leftAlignElements = document.querySelectorAll(leftAlignSelectors);
-        
-        leftAlignElements.forEach(el => {
-            el.classList.remove('text-end', 'text-right', 'text-md-end', 'text-md-right');
-            
-            if (el.classList.contains('text-md-end') || el.classList.contains('text-md-right')) {
-                el.classList.add('text-md-start');
-            } else {
-                el.classList.add('text-start');
-            }
-        });
-    }
-    
-    /**
-     * Fix icon orientations for RTL layout
-     */
-    function fixIconOrientations() {
-        // Icons that need to be mirrored in RTL (e.g., arrows)
-        const iconsToMirror = document.querySelectorAll('.bi-arrow-left, .bi-arrow-right, .bi-chevron-left, .bi-chevron-right');
-        
-        iconsToMirror.forEach(icon => {
+        // Fix icon directions
+        const directionalIcons = document.querySelectorAll('.bi-arrow-left, .bi-arrow-right, .bi-chevron-left, .bi-chevron-right');
+        directionalIcons.forEach(icon => {
             if (icon.classList.contains('bi-arrow-left')) {
-                icon.classList.remove('bi-arrow-left');
-                icon.classList.add('bi-arrow-right');
+                icon.classList.replace('bi-arrow-left', 'bi-arrow-right');
             } else if (icon.classList.contains('bi-arrow-right')) {
-                icon.classList.remove('bi-arrow-right');
-                icon.classList.add('bi-arrow-left');
+                icon.classList.replace('bi-arrow-right', 'bi-arrow-left');
             } else if (icon.classList.contains('bi-chevron-left')) {
-                icon.classList.remove('bi-chevron-left');
-                icon.classList.add('bi-chevron-right');
+                icon.classList.replace('bi-chevron-left', 'bi-chevron-right');
             } else if (icon.classList.contains('bi-chevron-right')) {
-                icon.classList.remove('bi-chevron-right');
-                icon.classList.add('bi-chevron-left');
-            }
-        });
-        
-        // Fix button icon spacing for RTL layout
-        const buttonsWithIcons = document.querySelectorAll('.btn i.bi');
-        buttonsWithIcons.forEach(icon => {
-            // Move the icon to the end of the button text for RTL
-            const button = icon.parentElement;
-            if (button && button.tagName === 'A' || button.tagName === 'BUTTON') {
-                button.appendChild(icon);
+                icon.classList.replace('bi-chevron-right', 'bi-chevron-left');
             }
         });
     }
     
-    /**
-     * Setup improved language switcher
-     */
-    function setupLanguageSwitcher() {
-        // Get all language switcher links
-        const languageLinks = document.querySelectorAll('#languageDropdown + .dropdown-menu a');
+    function fixBootstrapComponents() {
+        // Fix dropdown alignment
+        const dropdowns = document.querySelectorAll('.dropdown-menu');
+        dropdowns.forEach(dropdown => {
+            if (dropdown.classList.contains('dropdown-menu-end')) {
+                dropdown.classList.remove('dropdown-menu-end');
+                dropdown.classList.add('dropdown-menu-start');
+            }
+        });
         
+        // Fix input groups
+        const inputGroups = document.querySelectorAll('.input-group');
+        inputGroups.forEach(group => {
+            const addon = group.querySelector('.input-group-text');
+            if (addon) {
+                if (addon.classList.contains('rounded-end')) {
+                    addon.classList.replace('rounded-end', 'rounded-start');
+                } else if (addon.classList.contains('rounded-start')) {
+                    addon.classList.replace('rounded-start', 'rounded-end');
+                }
+            }
+        });
+        
+        // Fix modal dialogs
+        const modals = document.querySelectorAll('.modal-dialog');
+        modals.forEach(modal => {
+            modal.style.transform = 'translate(50%, 0)';
+        });
+    }
+    
+    function setupRTLAnimations() {
+        // Reverse slide animations
+        const slideElements = document.querySelectorAll('[class*="slide-"]');
+        slideElements.forEach(el => {
+            if (el.classList.contains('slide-left')) {
+                el.classList.replace('slide-left', 'slide-right');
+            } else if (el.classList.contains('slide-right')) {
+                el.classList.replace('slide-right', 'slide-left');
+            }
+        });
+        
+        // Add RTL-specific animations
+        document.documentElement.style.setProperty('--slide-offset', '-30px');
+    }
+    
+    function setupLanguageSwitcher() {
+        const languageLinks = document.querySelectorAll('[data-language]');
         languageLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Get language code from href
-                const href = this.getAttribute('href');
-                const langCode = href.substring(1, 3); // Extract 'en' or 'ar'
+                const language = this.dataset.language;
+                document.cookie = `django_language=${language};path=/;max-age=31536000`;
                 
-                // Set cookie for Django language
-                document.cookie = `django_language=${langCode};path=/;max-age=31536000`;
-                
-                // Redirect to the URL
-                window.location.href = href;
+                // Smooth transition
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    window.location.reload();
+                }, 300);
             });
         });
     }
-}); 
+});
+
+// Enhanced form validation messages for Arabic
+if (document.documentElement.dir === 'rtl') {
+    const validationMessages = {
+        required: 'هذا الحقل مطلوب',
+        email: 'يرجى إدخال عنوان بريد إلكتروني صحيح',
+        min: 'يجب أن تكون القيمة أكبر من أو تساوي {0}',
+        max: 'يجب أن تكون القيمة أقل من أو تساوي {0}',
+        minlength: 'يجب أن يحتوي هذا الحقل على {0} حروف على الأقل',
+        maxlength: 'يجب أن يحتوي هذا الحقل على {0} حروف كحد أقصى'
+    };
+    
+    // Apply custom validation messages
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('invalid', function(e) {
+                if (!e.target.validity.valid) {
+                    if (e.target.validity.valueMissing) {
+                        e.target.setCustomValidity(validationMessages.required);
+                    } else if (e.target.validity.typeMismatch && e.target.type === 'email') {
+                        e.target.setCustomValidity(validationMessages.email);
+                    }
+                }
+            });
+            
+            input.addEventListener('input', function(e) {
+                e.target.setCustomValidity('');
+            });
+        });
+    });
+}
