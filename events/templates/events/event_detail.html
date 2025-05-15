@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mt-2 mb-4" data-aos="fade">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'events:list' %}">{% trans "Events" %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ event.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+        <!-- Event Details -->
+        <div class="col-lg-8" data-aos="fade-up">
+            <!-- Event Images Carousel -->
+            <div id="eventCarousel" class="carousel slide mb-4 shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" class="d-block w-100" alt="{{ event.name }}" style="height: 400px; object-fit: cover;">
+                        {% else %}
+                            <img src="https://source.unsplash.com/random/800x600/?{{ event.category.name|lower }}" class="d-block w-100" alt="{{ event.name }}" style="height: 400px; object-fit: cover;">
+                        {% endif %}
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-2 rounded">
+                            <h5 class="fw-bold mb-0">{{ event.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Title and Basic Info -->
+            <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                    <div>
+                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-2">{{ event.category.name }}</span>
+                        <h1 class="display-5 fw-bold mb-3">{{ event.name }}</h1>
+                    </div>
+                    <div class="mt-2 mt-md-0">
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary hover-lift" title="{% trans 'Share' %}" data-bs-toggle="tooltip">
+                                <i class="bi bi-share"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger hover-lift" title="{% trans 'Save' %}" data-bs-toggle="tooltip">
+                                <i class="bi bi-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-4 col-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-calendar-event text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="mb-0 fw-bold">{% trans "Date" %}</p>
+                                <p class="mb-0 text-muted">{{ event.date|date:"F j, Y" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="mb-0 fw-bold">{% trans "Time" %}</p>
+                                <p class="mb-0 text-muted">{{ event.date|date:"g:i A" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6 mt-3 mt-md-0">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-geo-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="mb-0 fw-bold">{% trans "Location" %}</p>
+                                <p class="mb-0 text-muted">{{ event.venue }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Description -->
+            <div class="card border-0 shadow mb-4 hover-lift" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-3">{% trans "About This Event" %}</h3>
+                    <div class="event-description">
+                        {{ event.description|linebreaks }}
+                    </div>
+                    
+                    <div class="alert alert-info d-flex align-items-center border-0 rounded-3 bg-info bg-opacity-10" role="alert">
+                        <i class="bi bi-info-circle-fill me-2 text-info fs-4"></i>
+                        <div>{% trans "Food and beverages will be available for purchase. No outside food allowed." %}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organizer Info -->
+            <div class="card border-0 shadow mb-4 hover-lift" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-3">{% trans "Organizer" %}</h3>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 70px; height: 70px;">
+                            <i class="bi bi-building" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">{{ event.created_by.get_full_name }}</h5>
+                            <div class="d-flex align-items-center text-muted mb-2">
+                                <i class="bi bi-calendar2-check me-2"></i>
+                                <span>{% blocktrans with count=event.created_by.created_events.count %}Organizer of {{ count }} events{% endblocktrans %}</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary px-3 hover-lift">
+                                <i class="bi bi-person-badge me-2"></i>{% trans "View Profile" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Location Map -->
+            <div class="card border-0 shadow mb-4 hover-lift" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-3">{% trans "Location" %}</h3>
+                    <div class="ratio ratio-16x9 mb-3 rounded-3 overflow-hidden shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.3063874233135!2d-74.00597484822232!3d40.71277924441106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjAiTiA3NMKwMDAnMTguNiJX!5e0!3m2!1sen!2sus!4v1620528862297!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-geo-alt text-primary fs-4 me-2"></i>
+                        <p class="text-muted mb-0">{{ event.venue }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Sidebar -->
+        <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
+            <div class="card border-0 shadow sticky-top rounded-4 hover-lift" style="top: 20px;">
+                <div class="card-header bg-primary text-white border-0 py-3 rounded-top-4">
+                    <h3 class="card-title fw-bold mb-0">{% trans "Book Tickets" %}</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold fs-5">{% trans "Price" %}</span>
+                            <span class="badge bg-success px-3 py-2 rounded-pill shadow-sm pulse">{% trans "Available" %}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <h4 class="fw-bold mb-0 me-2">${{ event.price|floatformat:2 }}</h4>
+                            <small class="text-muted fw-normal">{% trans "per person" %}</small>
+                        </div>
+                    </div>
+                    
+                    {% if event.is_sold_out %}
+                        <button class="btn btn-danger w-100 py-3 mb-3" disabled>
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Sold Out" %}<i class="bi bi-x-circle ms-2"></i>
+                            {% else %}
+                                <i class="bi bi-x-circle me-2"></i>{% trans "Sold Out" %}
+                            {% endif %}
+                        </button>
+                    {% elif event.is_booked_by_user %}
+                        <div class="btn btn-success w-100 py-3 mb-3">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Booked" %}<i class="bi bi-check-circle ms-2"></i>
+                            {% else %}
+                                <i class="bi bi-check-circle me-2"></i>{% trans "Booked" %}
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <a href="{% url 'bookings:create' event.slug %}" class="btn btn-primary w-100 py-3 mb-3">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Book Now" %}<i class="bi bi-ticket-perforated ms-2"></i>
+                            {% else %}
+                                <i class="bi bi-ticket-perforated me-2"></i>{% trans "Book Now" %}
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                    
+                    <div class="d-flex align-items-center justify-content-center text-muted">
+                        <i class="bi bi-people me-2"></i>
+                        <span>{% blocktrans with count=event.available_tickets %}{{ count }} tickets available{% endblocktrans %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Events -->
+    <div class="my-5" data-aos="fade-up">
+        <h2 class="fw-bold mb-1">{% trans "You Might Also Like" %}</h2>
+        <p class="text-muted mb-4">{% trans "Discover similar events happening nearby" %}</p>
+        <div class="row g-4">
+            {% for similar_event in similar_events %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'100' }}">
+                <div class="card h-100 border-0 shadow-sm hover-lift">
+                    <div class="position-relative">
+                        {% if similar_event.image %}
+                        <img src="{{ similar_event.image.url }}" class="card-img-top" alt="{{ similar_event.name }}" style="height: 180px; object-fit: cover;">
+                        {% else %}
+                        <img src="https://source.unsplash.com/random/600x400?{{ similar_event.category.name|lower }}&sig={{ forloop.counter|add:'10' }}" class="card-img-top" alt="Event" style="height: 180px; object-fit: cover;">
+                        {% endif %}
+                        <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
+                            <span class="badge bg-primary px-2 py-1">{{ similar_event.category.name }}</span>
+                        </div>
+                        <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-2 bg-gradient-dark text-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {{ similar_event.date|date:"M d, Y" }}<i class="bi bi-calendar ms-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-calendar me-2"></i>{{ similar_event.date|date:"M d, Y" }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <h5 class="card-title fw-bold mb-2">{{ similar_event.name }}</h5>
+                        <div class="d-flex align-items-center mb-2">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                <small>{{ similar_event.venue }}</small>
+                                <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                            {% else %}
+                                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                                <small>{{ similar_event.venue }}</small>
+                            {% endif %}
+                        </div>
+                        <p class="card-text text-muted small mb-3">{{ similar_event.description|truncatewords:10 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold text-primary">${{ similar_event.price|floatformat:2 }}</span>
+                            {% if similar_event.is_booked_by_user %}
+                                <span class="badge bg-success px-2 py-1">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Booked" %}<i class="bi bi-check-circle ms-1"></i>
+                                    {% else %}
+                                        <i class="bi bi-check-circle me-1"></i>{% trans "Booked" %}
+                                    {% endif %}
+                                </span>
+                            {% elif similar_event.is_sold_out %}
+                                <span class="badge bg-danger px-2 py-1">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Sold Out" %}<i class="bi bi-x-circle ms-1"></i>
+                                    {% else %}
+                                        <i class="bi bi-x-circle me-1"></i>{% trans "Sold Out" %}
+                                    {% endif %}
+                                </span>
+                            {% else %}
+                                <a href="{% url 'events:detail' slug=similar_event.slug %}" class="btn btn-sm btn-primary">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "View" %}<i class="bi bi-arrow-right ms-1"></i>
+                                    {% else %}
+                                        <i class="bi bi-arrow-right me-1"></i>{% trans "View" %}
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .countdown-timer > div {
+        position: relative;
+    }
+    
+    .countdown-timer > div:not(:last-child)::after {
+        content: ':';
+        position: absolute;
+        right: -0.8rem;
+        top: 0.2rem;
+        font-weight: bold;
+    }
+</style>
+{% endblock %} 

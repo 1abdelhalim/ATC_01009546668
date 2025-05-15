@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load event_filters %}
+
+{% block content %}
+<div class="container">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="fw-bold mb-0">{% trans "Discover Events" %}</h1>
+            <p class="text-muted">{% trans "Find the perfect event for you" %}</p>
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-md-end">
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        {% trans "Sort By" %}<i class="bi bi-sort-down ms-1"></i>
+                    {% else %}
+                        <i class="bi bi-sort-down me-1"></i>{% trans "Sort By" %}
+                    {% endif %}
+                </button>
+                <ul class="dropdown-menu {% if LANGUAGE_CODE == 'ar' %}dropdown-menu-start{% else %}dropdown-menu-end{% endif %}" aria-labelledby="sortDropdown">
+                    <li><a class="dropdown-item" href="?sort=date">{% trans "Upcoming" %}</a></li>
+                    <li><a class="dropdown-item" href="?sort=price_asc">{% trans "Price: Low to High" %}</a></li>
+                    <li><a class="dropdown-item" href="?sort=price_desc">{% trans "Price: High to Low" %}</a></li>
+                    <li><a class="dropdown-item" href="?sort=popularity">{% trans "Most Popular" %}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter and Events Grid -->
+    <div class="row">
+        <!-- Filters Sidebar -->
+        <div class="col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">{% trans "Filters" %}</h5>
+                    
+                    <form action="{% url 'events:list' %}" method="get" id="filter-form">
+                        <!-- Hidden fields to preserve other query parameters -->
+                        {% if request.GET.search %}
+                        <input type="hidden" name="search" value="{{ request.GET.search }}">
+                        {% endif %}
+                        
+                        {% if request.GET.sort %}
+                        <input type="hidden" name="sort" value="{{ request.GET.sort }}">
+                        {% endif %}
+                        
+                        <!-- Date Filter -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold">{% trans "Date" %}</h6>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="radio" name="date_filter" id="dateToday" value="today" 
+                                    {% if request.GET.date_filter == 'today' %}checked{% endif %}>
+                                <label class="form-check-label" for="dateToday">{% trans "Today" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="radio" name="date_filter" id="dateTomorrow" value="tomorrow"
+                                    {% if request.GET.date_filter == 'tomorrow' %}checked{% endif %}>
+                                <label class="form-check-label" for="dateTomorrow">{% trans "Tomorrow" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="radio" name="date_filter" id="dateWeekend" value="weekend"
+                                    {% if request.GET.date_filter == 'weekend' %}checked{% endif %}>
+                                <label class="form-check-label" for="dateWeekend">{% trans "This Weekend" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="radio" name="date_filter" id="dateWeek" value="week"
+                                    {% if request.GET.date_filter == 'week' %}checked{% endif %}>
+                                <label class="form-check-label" for="dateWeek">{% trans "This Week" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="radio" name="date_filter" id="dateMonth" value="month"
+                                    {% if request.GET.date_filter == 'month' %}checked{% endif %}>
+                                <label class="form-check-label" for="dateMonth">{% trans "This Month" %}</label>
+                            </div>
+                            {% if request.GET.date_filter %}
+                            <div class="mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary clear-filter" data-filter="date_filter">
+                                    <i class="bi bi-x"></i> {% trans "Clear" %}
+                                </button>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Category Filter -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold">{% trans "Category" %}</h6>
+                            {% for category in categories %}
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="cat{{ category.slug }}" 
+                                    name="category" value="{{ category.slug }}"
+                                    {% if category.slug in request.GET.category|default:''|split:',' %}checked{% endif %}>
+                                <label class="form-check-label" for="cat{{ category.slug }}">{{ category.name }}</label>
+                            </div>
+                            {% empty %}
+                            <p>{% trans "No categories available." %}</p>
+                            {% endfor %}
+                            {% if request.GET.category %}
+                            <div class="mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary clear-filter" data-filter="category">
+                                    <i class="bi bi-x"></i> {% trans "Clear" %}
+                                </button>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Price Filter -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold">{% trans "Price" %}</h6>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="priceFree" name="price" value="free"
+                                    {% if 'free' in request.GET.price|default:''|split:',' %}checked{% endif %}>
+                                <label class="form-check-label" for="priceFree">{% trans "Free" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="price0_50" name="price" value="0-50"
+                                    {% if '0-50' in request.GET.price|default:''|split:',' %}checked{% endif %}>
+                                <label class="form-check-label" for="price0_50">{% trans "$0 - $50" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="price50_100" name="price" value="50-100"
+                                    {% if '50-100' in request.GET.price|default:''|split:',' %}checked{% endif %}>
+                                <label class="form-check-label" for="price50_100">{% trans "$50 - $100" %}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="price100plus" name="price" value="100-"
+                                    {% if '100-' in request.GET.price|default:''|split:',' %}checked{% endif %}>
+                                <label class="form-check-label" for="price100plus">{% trans "$100+" %}</label>
+                            </div>
+                            {% if request.GET.price %}
+                            <div class="mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary clear-filter" data-filter="price">
+                                    <i class="bi bi-x"></i> {% trans "Clear" %}
+                                </button>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">{% trans "Apply Filters" %}</button>
+                        
+                        {% if request.GET.date_filter or request.GET.category or request.GET.price %}
+                        <button type="button" id="clear-all-filters" class="btn btn-outline-secondary w-100 mt-2">
+                            {% trans "Clear All Filters" %}
+                        </button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Events Grid -->
+        <div class="col-lg-9">
+            <div class="row g-4">
+                {% for event in events %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                        <div class="position-relative">
+                            {% if event.image %}
+                            <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                            <img src="https://source.unsplash.com/random/600x400?{{ event.category.name|lower }}&sig={{ forloop.counter }}" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
+                                {% if event.category %}
+                                <span class="badge bg-primary p-2 shadow-sm">{{ event.category.name }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-3 bg-gradient-dark text-white">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        {% if LANGUAGE_CODE == 'ar' %}
+                                            {{ event.date|date:"M d, Y" }}<i class="bi bi-calendar ms-2"></i>
+                                        {% else %}
+                                            <i class="bi bi-calendar me-2"></i>{{ event.date|date:"M d, Y" }}
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        {% if event.available_tickets <= 10 %}
+                                        <span class="badge bg-danger">{% trans "Only" %} {{ event.available_tickets }} {% trans "left" %}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ event.name }}</h5>
+                            <div class="d-flex align-items-center mb-2">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <small>{{ event.venue }}</small>
+                                    <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                                {% else %}
+                                    <i class="bi bi-geo-alt me-2 text-primary"></i>
+                                    <small>{{ event.venue }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <small>{{ event.date|date:"g:i A" }}</small>
+                                    <i class="bi bi-clock ms-2 text-primary"></i>
+                                {% else %}
+                                    <i class="bi bi-clock me-2 text-primary"></i>
+                                    <small>{{ event.date|date:"g:i A" }}</small>
+                                {% endif %}
+                            </div>
+                            <p class="card-text text-muted small mb-3">{{ event.description|truncatewords:20 }}</p>
+                            
+                            {% if event.tags.all %}
+                            <div class="mb-3">
+                                {% for tag in event.tags.all %}
+                                <span class="badge bg-secondary bg-opacity-10 text-secondary me-1 mb-1">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary">${{ event.price|floatformat:2 }}</span>
+                                {% if event.is_booked_by_user %}
+                                    <span class="badge bg-success px-3 py-2">
+                                        {% if LANGUAGE_CODE == 'ar' %}
+                                            {% trans "Booked" %}<i class="bi bi-check-circle ms-1"></i>
+                                        {% else %}
+                                            <i class="bi bi-check-circle me-1"></i>{% trans "Booked" %}
+                                        {% endif %}
+                                    </span>
+                                {% elif event.is_sold_out %}
+                                    <span class="badge bg-danger px-3 py-2">
+                                        {% if LANGUAGE_CODE == 'ar' %}
+                                            {% trans "Sold Out" %}<i class="bi bi-x-circle ms-1"></i>
+                                        {% else %}
+                                            <i class="bi bi-x-circle me-1"></i>{% trans "Sold Out" %}
+                                        {% endif %}
+                                    </span>
+                                {% else %}
+                                    <a href="{% url 'events:detail' slug=event.slug %}" class="btn btn-primary">
+                                        {% if LANGUAGE_CODE == 'ar' %}
+                                            {% trans "Book Now" %}<i class="bi bi-arrow-right ms-1"></i>
+                                        {% else %}
+                                            <i class="bi bi-arrow-right me-1"></i>{% trans "Book Now" %}
+                                        {% endif %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="mt-2 small text-muted">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {{ event.available_tickets }} {% trans "tickets available" %} / {{ event.capacity }} {% trans "total" %}<i class="bi bi-people ms-1"></i>
+                                {% else %}
+                                    <i class="bi bi-people me-1"></i>{{ event.available_tickets }} {% trans "tickets available" %} / {{ event.capacity }} {% trans "total" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        <i class="bi bi-info-circle me-2"></i>
+                        {% trans "No events found matching your criteria." %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <nav aria-label="Page navigation" class="mt-5">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" tabindex="-1">{% trans "Previous" %}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">{% trans "Previous" %}</a>
+                    </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="page-item active"><a class="page-link" href="?page={{ num }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ num }}</a></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% trans "Next" %}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">{% trans "Next" %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .bg-gradient-dark {
+        background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle clearing individual filters
+        document.querySelectorAll('.clear-filter').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const filterName = this.dataset.filter;
+                
+                // Clear the filter from the form
+                document.querySelectorAll(`[name="${filterName}"]`).forEach(function(input) {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = false;
+                    } else {
+                        input.value = '';
+                    }
+                });
+                
+                // Submit the form to apply the changes
+                document.getElementById('filter-form').submit();
+            });
+        });
+        
+        // Handle clearing all filters
+        const clearAllButton = document.getElementById('clear-all-filters');
+        if (clearAllButton) {
+            clearAllButton.addEventListener('click', function() {
+                // Get the current URL without query parameters
+                const baseUrl = window.location.href.split('?')[0];
+                
+                // Preserve search parameter if it exists
+                const searchParam = new URLSearchParams(window.location.search).get('search');
+                
+                if (searchParam) {
+                    window.location.href = `${baseUrl}?search=${searchParam}`;
+                } else {
+                    window.location.href = baseUrl;
+                }
+            });
+        }
+        
+        // Auto-submit form when checkboxes/radios change
+        const autoSubmitInputs = document.querySelectorAll('.filter-checkbox');
+        autoSubmitInputs.forEach(function(input) {
+            input.addEventListener('change', function() {
+                document.getElementById('filter-form').submit();
+            });
+        });
+    });
+</script>
+{% endblock %} 
