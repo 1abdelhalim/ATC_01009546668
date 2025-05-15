@@ -1,6 +1,6 @@
-# Event Booking System
+# Evently - Event Booking System
 
-A full-stack event booking system built with Django, featuring a modern UI with Tailwind CSS and HTMX.
+A full-stack event booking system built with Django, featuring a modern UI with HTMX and responsive design.
 
 ## 🌟 Features
 
@@ -8,7 +8,6 @@ A full-stack event booking system built with Django, featuring a modern UI with 
 - Browse and search events
 - Book events with instant confirmation
 - User authentication (login/register)
-- Dark mode support
 - Responsive design for all devices
 - Multi-language support (English + Arabic)
 
@@ -22,12 +21,13 @@ A full-stack event booking system built with Django, featuring a modern UI with 
 ## 🛠 Tech Stack
 
 - **Backend**: Django 5.0 + Django REST Framework
-- **Frontend**: Django Templates + HTMX + Tailwind CSS
-- **Database**: SQLite (dev) / PostgreSQL (prod)
-- **Deployment**: Docker + Azure Web App
+- **Frontend**: Django Templates + HTMX
+- **Database**: SQLite (development)
+- **Deployment**: Docker
 - **CI/CD**: GitHub Actions
 - **Authentication**: Django Auth System
 - **API Documentation**: Swagger/ReDoc
+- **Internationalization**: django-modeltranslation
 
 ## 🚀 Quick Start
 
@@ -35,8 +35,8 @@ A full-stack event booking system built with Django, featuring a modern UI with 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/event-booking-system.git
-cd event-booking-system
+git clone https://github.com/1abdelhalim/Evently.git
+cd Evently
 ```
 
 2. Create and activate virtual environment:
@@ -52,20 +52,19 @@ source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-4. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your settings
-```
-
-5. Run migrations:
+4. Run migrations:
 ```bash
 python manage.py migrate
 ```
 
-6. Create superuser:
+5. Create superuser:
 ```bash
 python manage.py createsuperuser
+```
+
+6. Generate sample data (optional):
+```bash
+python create_sample_data.py
 ```
 
 7. Run development server:
@@ -77,26 +76,26 @@ python manage.py runserver
 
 1. Build the Docker image:
 ```bash
-docker build -t event-booking-system .
+docker build -t evently .
 ```
 
 2. Run the container:
 ```bash
-docker run -p 8000:8000 event-booking-system
+docker run -p 8000:8000 evently
 ```
 
 ## 📦 Project Structure
 
 ```
-event_booking/
+evently/
 ├── core/               # Core app for shared components
-├── users/             # User authentication and management
-├── events/            # Event management
-├── bookings/          # Booking management
-├── static/            # Static files
-├── templates/         # HTML templates
-├── media/             # User-uploaded files
-└── manage.py          # Django management script
+├── users/              # User authentication and management
+├── events/             # Event management
+├── bookings/           # Booking management
+├── static/             # Static files (CSS, JS, images)
+├── templates/          # HTML templates
+├── locale/             # Translation files
+└── manage.py           # Django management script
 ```
 
 ## 🔒 Security Features
@@ -107,18 +106,29 @@ event_booking/
 - Environment variable management
 - Production security settings
 
-## 🧪 Testing
-
-Run tests with:
-```bash
-python manage.py test
-```
-
 ## 📚 API Documentation
 
 API documentation is available at:
 - Swagger UI: `/api/docs/`
 - ReDoc: `/api/redoc/`
+
+## 🌐 Internationalization
+
+The application supports multiple languages:
+- English (default)
+- Arabic (right-to-left support)
+
+To add or update translations:
+```bash
+python manage.py makemessages -l ar
+python manage.py compilemessages
+```
+
+## 🔧 Utility Scripts
+
+- **create_sample_data.py**: Generates sample events and users
+- **update_arabic_translations.py**: Updates Arabic translations
+- **fixed_translations.py**: Fixes translation errors
 
 ## 🤝 Contributing
 
