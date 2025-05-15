@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .profile-header {
+        background-color: var(--bs-primary-bg-subtle);
+        border-radius: 1rem;
+    }
+    .stats-card {
+        transition: all 0.3s ease;
+    }
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+    .booking-item {
+        transition: all 0.3s;
+    }
+    .booking-item:hover {
+        transform: translateX(5px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Profile Header -->
+    <div class="profile-header p-4 mb-4 shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center">
+                <div class="avatar bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 100px; height: 100px;">
+                    <i class="bi bi-person-fill fs-1"></i>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h2 class="mb-0">{{ user.get_full_name|default:user.username }}</h2>
+                <p class="text-muted mb-1">
+                    <i class="bi bi-envelope"></i> {{ user.email }}
+                    {% if user.phone_number %}
+                    <span class="ms-3"><i class="bi bi-telephone"></i> {{ user.phone_number }}</span>
+                    {% endif %}
+                </p>
+                {% if user.address %}
+                <p class="text-muted mb-2">
+                    <i class="bi bi-geo-alt"></i> {{ user.address }}
+                </p>
+                {% endif %}
+                <p class="mb-0">
+                    <span class="badge rounded-pill bg-{{ user.role|lower }}-subtle text-{{ user.role|lower }}">
+                        {{ user.get_role_display }}
+                    </span>
+                    <span class="badge rounded-pill bg-secondary-subtle text-secondary">
+                        {% trans "Member since" %} {{ user.date_joined|date:"F Y" }}
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-2 text-end">
+                <a href="{% url 'users:profile_edit' %}" class="btn btn-outline-primary">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        {% trans "Edit Profile" %}<i class="bi bi-pencil ms-1"></i>
+                    {% else %}
+                        <i class="bi bi-pencil me-1"></i>{% trans "Edit Profile" %}
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Stats -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm stats-card">
+                <div class="card-body text-center">
+                    <div class="display-4 text-primary mb-2">{{ user.bookings.all.count }}</div>
+                    <h5 class="card-title">{% trans "Total Bookings" %}</h5>
+                    <p class="card-text text-muted">{% trans "Events you've booked since joining" %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm stats-card">
+                <div class="card-body text-center">
+                    <div class="display-4 text-success mb-2">{{ user.bookings.confirmed.count|default:"0" }}</div>
+                    <h5 class="card-title">{% trans "Upcoming Events" %}</h5>
+                    <p class="card-text text-muted">{% trans "Events you're attending soon" %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm stats-card">
+                <div class="card-body text-center">
+                    <div class="display-4 text-info mb-2">{{ user.bookings.cancelled.count|default:"0" }}</div>
+                    <h5 class="card-title">{% trans "Categories" %}</h5>
+                    <p class="card-text text-muted">{% trans "Different event types you've attended" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>{% trans "Your Recent Bookings" %}</h3>
+                <a href="{% url 'bookings:list' %}" class="btn btn-sm btn-outline-primary">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        {% trans "View All" %}<i class="bi bi-arrow-right ms-1"></i>
+                    {% else %}
+                        <i class="bi bi-arrow-right me-1"></i>{% trans "View All" %}
+                    {% endif %}
+                </a>
+            </div>
+
+            <div class="list-group shadow-sm">
+                {% for booking in recent_bookings %}
+                <a href="{% url 'bookings:detail' booking_id=booking.id %}" class="list-group-item list-group-item-action booking-item">
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ booking.event.name }}</h5>
+                            <p class="mb-1 text-muted">
+                                <i class="bi bi-calendar me-1"></i> {{ booking.event.date|date:"F j, Y" }}
+                                <span class="mx-2">|</span>
+                                <i class="bi bi-geo-alt me-1"></i> {{ booking.event.venue }}
+                            </p>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-{{ booking.get_status_display|lower }}-subtle text-{{ booking.get_status_display|lower }}">
+                                {{ booking.get_status_display }}
+                            </span>
+                            <div class="small text-muted">{{ booking.booking_reference }}</div>
+                        </div>
+                    </div>
+                </a>
+                {% empty %}
+                <div class="list-group-item text-center py-5">
+                    <div class="mb-3 text-muted">
+                        <i class="bi bi-calendar-x fs-1"></i>
+                    </div>
+                    <h5>{% trans "No bookings yet" %}</h5>
+                    <p class="mb-3">{% trans "You haven't booked any events yet." %}</p>
+                    <a href="{% url 'events:list' %}" class="btn btn-primary">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Browse Events" %}<i class="bi bi-search ms-1"></i>
+                        {% else %}
+                            <i class="bi bi-search me-1"></i>{% trans "Browse Events" %}
+                        {% endif %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

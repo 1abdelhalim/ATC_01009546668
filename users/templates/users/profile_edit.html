@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Page Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">{% trans "Edit Your Profile" %}</h2>
+                <a href="{% url 'users:profile' %}" class="btn btn-outline-secondary">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        {% trans "Back to Profile" %}<i class="bi bi-arrow-left ms-1"></i>
+                    {% else %}
+                        <i class="bi bi-arrow-left me-1"></i>{% trans "Back to Profile" %}
+                    {% endif %}
+                </a>
+            </div>
+            
+            <!-- Alert Messages -->
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            
+            <!-- Profile Edit Form -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h5 class="mb-0">{% trans "Personal Information" %}</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" action="{% url 'users:profile_edit' %}">
+                        {% csrf_token %}
+                        
+                        <div class="row g-3">
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <label for="first_name" class="form-label">{% trans "First Name" %}</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+                            </div>
+                            
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <label for="last_name" class="form-label">{% trans "Last Name" %}</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="col-12">
+                                <label for="email" class="form-label">{% trans "Email" %}</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                            </div>
+                            
+                            <!-- Username (read only) -->
+                            <div class="col-12">
+                                <label for="username" class="form-label">{% trans "Username" %}</label>
+                                <input type="text" class="form-control bg-light" id="username" value="{{ user.username }}" readonly disabled>
+                                <small class="text-muted">{% trans "Username cannot be changed" %}</small>
+                            </div>
+                            
+                            <!-- Phone Number -->
+                            <div class="col-md-6">
+                                <label for="phone_number" class="form-label">{% trans "Phone Number" %}</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ user.phone_number }}">
+                            </div>
+                            
+                            <!-- Role (read only) -->
+                            <div class="col-md-6">
+                                <label for="role" class="form-label">{% trans "Role" %}</label>
+                                <input type="text" class="form-control bg-light" id="role" value="{{ user.get_role_display }}" readonly disabled>
+                            </div>
+                            
+                            <!-- Address -->
+                            <div class="col-12">
+                                <label for="address" class="form-label">{% trans "Address" %}</label>
+                                <textarea class="form-control" id="address" name="address" rows="3">{{ user.address }}</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a href="{% url 'users:password_change' %}" class="btn btn-outline-dark">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "Change Password" %}<i class="bi bi-key ms-1"></i>
+                                {% else %}
+                                    <i class="bi bi-key me-1"></i>{% trans "Change Password" %}
+                                {% endif %}
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "Save Changes" %}<i class="bi bi-check-lg ms-1"></i>
+                                {% else %}
+                                    <i class="bi bi-check-lg me-1"></i>{% trans "Save Changes" %}
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
