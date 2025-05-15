@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-bs-theme="light" {% if LANGUAGE_CODE == 'ar' %}dir="rtl"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently - Discover Amazing Events</title>
+    {% load static %}
+    {% load i18n %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- RTL CSS for Arabic -->
+    {% if LANGUAGE_CODE == 'ar' %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    {% endif %}
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% if LANGUAGE_CODE == 'ar' %}
+    <link rel="stylesheet" href="{% static 'css/rtl-fixes.css' %}">
+    {% endif %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="fade-in">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                {% if LANGUAGE_CODE == 'ar' %}
+                    <span class="gradient-text">Evently</span>
+                    <i class="bi bi-calendar-event ms-2"></i>
+                {% else %}
+                    <i class="bi bi-calendar-event me-2"></i>
+                    <span class="gradient-text">Evently</span>
+                {% endif %}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'events:list' %}">{% trans "Events" %}</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bookings:list' %}">{% trans "My Bookings" %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Language Selector -->
+                    <div class="dropdown {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                العربية
+                                <i class="bi bi-globe ms-1"></i>
+                            {% else %}
+                                <i class="bi bi-globe me-1"></i>
+                                English
+                            {% endif %}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <a href="/en{{ request.get_full_path|slice:'3:' }}" class="dropdown-item {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                                    English
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ar{{ request.get_full_path|slice:'3:' }}" class="dropdown-item {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">
+                                    العربية
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <div class="theme-toggle {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" id="themeToggle" title="{% trans 'Toggle Dark/Light Mode' %}">
+                        <i class="bi bi-sun-fill theme-icon-light"></i>
+                        <i class="bi bi-moon-fill theme-icon-dark d-none"></i>
+                    </div>
+                    
+                    {% if user.is_authenticated %}
+                        <span class="navbar-text me-3 d-none d-md-inline">{% trans "Welcome" %}, {{ user.username }}</span>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "Account" %}<i class="bi bi-person-circle ms-1"></i>
+                                {% else %}
+                                    <i class="bi bi-person-circle me-1"></i>{% trans "Account" %}
+                                {% endif %}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="{% url 'users:profile' %}">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Profile" %}<i class="bi bi-person ms-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-person me-2"></i>{% trans "Profile" %}
+                                    {% endif %}
+                                </a></li>
+                                {% if user.is_admin %}
+                                <li><a class="dropdown-item" href="{% url 'events:admin_dashboard' %}">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Admin Dashboard" %}<i class="bi bi-speedometer2 ms-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-speedometer2 me-2"></i>{% trans "Admin Dashboard" %}
+                                    {% endif %}
+                                </a></li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'users:logout' %}">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                        {% trans "Logout" %}<i class="bi bi-box-arrow-right ms-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-box-arrow-right me-2"></i>{% trans "Logout" %}
+                                    {% endif %}
+                                </a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'users:login' %}" class="btn btn-outline-primary {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Login" %}<i class="bi bi-box-arrow-in-right ms-1"></i>
+                            {% else %}
+                                <i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Login" %}
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'users:register' %}" class="btn btn-primary">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Register" %}<i class="bi bi-person-plus ms-1"></i>
+                            {% else %}
+                                <i class="bi bi-person-plus me-1"></i>{% trans "Register" %}
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 text-center text-md-start">
+                    <h5 class="mb-3 gradient-text">Evently</h5>
+                    <p class="mb-3">{% trans "Discover and book amazing events in your area. Never miss out on what matters most to you." %}</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3">
+                        <a href="#" class="text-decoration-none"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-twitter-x fs-5"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center text-md-start">
+                    <h6 class="mb-3 fw-bold">{% trans "Quick Links" %}</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-decoration-none">{% trans "Home" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'events:list' %}" class="text-decoration-none">{% trans "Events" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "About Us" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "Contact" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 text-center text-md-start">
+                    <h6 class="mb-3 fw-bold">{% trans "Support" %}</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "Help Center" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "FAQ" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "Privacy Policy" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">{% trans "Terms of Service" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-start">
+                    <h6 class="mb-3 fw-bold">{% trans "Stay Updated" %}</h6>
+                    <p class="mb-3">{% trans "Subscribe to our newsletter for the latest events and offers." %}</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="{% trans 'Your email' %}">
+                        <button class="btn btn-primary" type="button">{% trans "Subscribe" %}</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0">&copy; 2025 Evently. {% trans "All rights reserved." %}</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- RTL Support Script -->
+    <script src="{% static 'js/rtl-support.js' %}"></script>
+    <!-- Custom Scripts -->
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+        
+        // Dark mode toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+            const lightIcon = document.querySelector('.theme-icon-light');
+            const darkIcon = document.querySelector('.theme-icon-dark');
+            
+            // Check for saved theme preference or respect OS preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            
+            // Apply the saved theme or use system preference
+            const themeToApply = savedTheme || systemTheme;
+            htmlElement.setAttribute('data-bs-theme', themeToApply);
+            updateThemeIcon(themeToApply);
+            
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                htmlElement.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            // Update icon visibility based on current theme
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    lightIcon.classList.add('d-none');
+                    darkIcon.classList.remove('d-none');
+                } else {
+                    darkIcon.classList.add('d-none');
+                    lightIcon.classList.remove('d-none');
+                }
+            }
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

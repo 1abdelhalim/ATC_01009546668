@@ -1,0 +1,379 @@
+/* Event Booking System - Custom Styles
+   Main stylesheet with dark mode support, animations, and modern UI
+*/
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-color-rgb: 79, 70, 229;
+    --primary-hover: #4338ca;
+    --secondary-color: #7c3aed;
+    --accent-color: #c026d3;
+    --accent-color-rgb: 192, 38, 211;
+    --text-color: #1f2937;
+    --text-light: #6b7280;
+    --light-bg: #f9fafb;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --dark-border-color: #d1d5db;
+    --footer-bg: #ffffff;
+    --navbar-bg: #ffffff;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-bs-theme="dark"] {
+    --primary-color: #6366f1;
+    --primary-hover: #818cf8;
+    --secondary-color: #8b5cf6;
+    --accent-color: #d946ef;
+    --text-color: #e5e7eb;
+    --text-light: #9ca3af;
+    --light-bg: #1f2937;
+    --card-bg: #111827;
+    --border-color: #374151;
+    --dark-border-color: #4b5563;
+    --footer-bg: #111827;
+    --navbar-bg: #111827;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    transition: var(--theme-transition);
+    scroll-behavior: smooth;
+}
+
+.text-muted, .text-secondary {
+    color: var(--text-light) !important;
+}
+
+/* Custom Card Styles */
+.card {
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+}
+
+/* Navigation Styles */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: var(--navbar-bg) !important;
+    transition: var(--theme-transition);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    transition: var(--theme-transition);
+}
+
+.nav-link {
+    font-weight: 500;
+    position: relative;
+    transition: var(--theme-transition);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* RTL Support for nav links */
+html[dir="rtl"] .nav-link::after {
+    left: auto;
+    right: 50%;
+    transition: width 0.3s ease, right 0.3s ease;
+}
+
+html[dir="rtl"] .nav-link:hover::after {
+    left: auto;
+    right: 0;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.btn-hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Form Controls */
+.form-control, .input-group-text {
+    border-color: var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: var(--theme-transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    position: relative;
+}
+
+/* RTL Gradient Text */
+html[dir="rtl"] .gradient-text {
+    background: linear-gradient(270deg, var(--primary-color), var(--accent-color));
+    background-color: transparent;
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+}
+
+/* Background Gradients */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.bg-gradient-accent {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+    transition: var(--theme-transition);
+}
+
+/* RTL specific adjustments */
+html[dir="rtl"] {
+    font-family: 'Segoe UI', 'Tahoma', 'Droid Arabic Naskh', 'Noto Sans Arabic', sans-serif;
+}
+
+html[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+html[dir="rtl"] .me-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+html[dir="rtl"] .me-1, 
+html[dir="rtl"] .me-2, 
+html[dir="rtl"] .me-3, 
+html[dir="rtl"] .me-4, 
+html[dir="rtl"] .me-5 {
+    margin-left: var(--bs-gutter-x) !important;
+    margin-right: 0 !important;
+}
+
+html[dir="rtl"] .ms-1, 
+html[dir="rtl"] .ms-2, 
+html[dir="rtl"] .ms-3, 
+html[dir="rtl"] .ms-4, 
+html[dir="rtl"] .ms-5 {
+    margin-right: var(--bs-gutter-x) !important;
+    margin-left: 0 !important;
+}
+
+html[dir="rtl"] .text-md-start {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .text-md-end {
+    text-align: left !important;
+}
+
+html[dir="rtl"] .dropdown-menu-end {
+    right: auto !important;
+    left: 0 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Card Overlay for Event Images */
+.event-card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    transition: var(--theme-transition);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .card-deck .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+}
+
+/* Utility Classes */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.rounded-xl {
+    border-radius: 1rem !important;
+}
+
+.rounded-xxl {
+    border-radius: 1.5rem !important;
+}
+
+.shadow-hover:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.bg-opacity-hover:hover {
+    opacity: 0.9;
+}
+
+/* Accessibility Focus Styles */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+} 

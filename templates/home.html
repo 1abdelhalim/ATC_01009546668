@@ -1,0 +1,562 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="position-relative overflow-hidden mb-5" data-aos="fade-up">
+    <div class="bg-primary bg-opacity-10 position-absolute top-0 end-0 bottom-0 w-50 rounded-start-pill"></div>
+    <div class="container py-5 position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">{% trans "Find Your Next Experience" %}</span>
+                <h1 class="fw-bold display-4 mb-3 hero-heading">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        {% trans "Near You" %} <span class="gradient-text">{% trans "Amazing Events" %}</span> {% trans "Discover" %}
+                    {% else %}
+                        {% trans "Discover" %} <span class="gradient-text">{% trans "Amazing Events" %}</span> {% trans "Near You" %}
+                    {% endif %}
+                </h1>
+                <p class="lead mb-4">{% trans "Find and book the most exciting events in your area. From concerts to workshops, we've got you covered." %}</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{% url 'events:list' %}" class="btn btn-primary btn-lg px-4 shadow-sm">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Browse Events" %}<i class="bi bi-search me-2"></i>
+                        {% else %}
+                            <i class="bi bi-search me-2"></i>{% trans "Browse Events" %}
+                        {% endif %}
+                    </a>
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'users:register' %}" class="btn btn-outline-primary btn-lg px-4">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Sign Up" %}<i class="bi bi-person-plus me-2"></i>
+                        {% else %}
+                            <i class="bi bi-person-plus me-2"></i>{% trans "Sign Up" %}
+                        {% endif %}
+                    </a>
+                    {% endif %}
+                </div>
+                
+                <!-- Search box -->
+                <div class="mt-4 pt-3">
+                    <form class="d-flex gap-2" action="{% url 'events:list' %}" method="get">
+                        <div class="input-group shadow-sm">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="text" name="search" class="form-control border-start-0" placeholder="{% trans 'Search events...' %}" aria-label="{% trans 'Search events' %}">
+                            {% else %}
+                                <input type="text" name="search" class="form-control border-end-0" placeholder="{% trans 'Search events...' %}" aria-label="{% trans 'Search events' %}">
+                                <span class="input-group-text bg-white border-start-0">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Search" %}
+                            {% else %}
+                                {% trans "Search" %}
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+                <div class="position-relative">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <div class="position-absolute top-0 end-0 translate-middle-y rounded-circle bg-accent-color bg-opacity-25" style="width: 200px; height: 200px; z-index: -1;"></div>
+                    {% else %}
+                        <div class="position-absolute top-0 start-0 translate-middle-y rounded-circle bg-accent-color bg-opacity-25" style="width: 200px; height: 200px; z-index: -1;"></div>
+                    {% endif %}
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{% trans 'Events' %}" class="img-fluid rounded-4 shadow" style="transform: rotate(2deg);">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="container mb-5" data-aos="fade-up" data-aos-delay="300">
+    <div class="row g-4 text-center">
+        <div class="col-md-3 col-6">
+            <div class="card border-0 h-100">
+                <div class="card-body">
+                    <div class="display-4 fw-bold text-primary mb-2" data-aos="zoom-in" data-aos-delay="400">500+</div>
+                    <p class="mb-0">{% trans "Events Monthly" %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card border-0 h-100">
+                <div class="card-body">
+                    <div class="display-4 fw-bold text-primary mb-2" data-aos="zoom-in" data-aos-delay="500">10K+</div>
+                    <p class="mb-0">{% trans "Happy Users" %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card border-0 h-100">
+                <div class="card-body">
+                    <div class="display-4 fw-bold text-primary mb-2" data-aos="zoom-in" data-aos-delay="600">50+</div>
+                    <p class="mb-0">{% trans "Categories" %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card border-0 h-100">
+                <div class="card-body">
+                    <div class="display-4 fw-bold text-primary mb-2" data-aos="zoom-in" data-aos-delay="700">98%</div>
+                    <p class="mb-0">{% trans "Satisfaction Rate" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Categories -->
+<div class="container mb-5" data-aos="fade-up">
+    <h2 class="fw-bold mb-1">{% trans "Our Categories" %}</h2>
+    <p class="text-muted mb-4">{% trans "Find events that match your interests" %}</p>
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-6" data-aos="flip-left" data-aos-delay="100">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0 bg-primary bg-opacity-10 hover-lift">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-music-note-beamed text-primary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="card-title h5 mb-0 fw-bold">{% trans "Concerts" %}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="flip-left" data-aos-delay="200">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0 bg-secondary bg-opacity-10 hover-lift">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-easel text-secondary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="card-title h5 mb-0 fw-bold">{% trans "Workshops" %}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="flip-left" data-aos-delay="300">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0 bg-success bg-opacity-10 hover-lift">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-cup-hot text-success" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="card-title h5 mb-0 fw-bold">{% trans "Networking" %}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="flip-left" data-aos-delay="400">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 border-0 bg-danger bg-opacity-10 hover-lift">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-controller text-danger" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="card-title h5 mb-0 fw-bold">{% trans "Entertainment" %}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Upcoming Events -->
+<div class="container mb-5" data-aos="fade-up">
+    <div class="d-flex align-items-center justify-content-between mb-1">
+        <h2 class="fw-bold mb-0">{% trans "Upcoming Events" %}</h2>
+        <a href="{% url 'events:list' %}" class="btn btn-sm btn-outline-primary">{% trans "View All" %}</a>
+    </div>
+    <p class="text-muted mb-4">{% trans "Don't miss out on these exciting events happening soon" %}</p>
+    <div class="row g-4">
+        <!-- Tech Conference -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 border-0 hover-lift">
+                <div class="position-relative">
+                    <img src="{% static 'img/events/tech-conference.jpg' %}" class="card-img-top" alt="{% trans 'Tech Conference' %}">
+                    <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-3">
+                        <span class="badge bg-primary p-2">{% trans "Technology" %}</span>
+                    </div>
+                    <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-3 bg-gradient-dark text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "June" %} 15, 2025<i class="bi bi-calendar ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-calendar me-2"></i>{% trans "June" %} 15, 2025
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    120 {% trans "going" %}<i class="bi bi-people ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-people me-2"></i>120 {% trans "going" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">{% trans "Annual Tech Innovation Conference" %}</h3>
+                    <p class="card-text text-muted">{% trans "Join industry leaders and innovators for a full day of inspiring talks about the latest technology trends." %}</p>
+                    <div class="d-flex align-items-center mb-3">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            <small>{% trans "San Francisco Convention Center" %}</small>
+                            <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                        {% else %}
+                            <i class="bi bi-geo-alt me-2 text-primary"></i>
+                            <small>{% trans "San Francisco Convention Center" %}</small>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-primary">$199.00</span>
+                        <a href="{% url 'events:detail' slug='web-development-conference' %}" class="btn btn-primary">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Book Now" %}
+                            {% else %}
+                                {% trans "Book Now" %}
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Music Festival -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 border-0 hover-lift">
+                <div class="position-relative">
+                    <img src="{% static 'img/events/music-festival.jpg' %}" class="card-img-top" alt="{% trans 'Music Festival' %}">
+                    <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-3">
+                        <span class="badge bg-secondary p-2">{% trans "Music" %}</span>
+                    </div>
+                    <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-3 bg-gradient-dark text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "July" %} 22-24, 2025<i class="bi bi-calendar ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-calendar me-2"></i>{% trans "July" %} 22-24, 2025
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    350 {% trans "going" %}<i class="bi bi-people ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-people me-2"></i>350 {% trans "going" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">{% trans "Summer Sounds Music Festival" %}</h3>
+                    <p class="card-text text-muted">{% trans "Three days of incredible live performances from top artists across multiple stages in a beautiful outdoor setting." %}</p>
+                    <div class="d-flex align-items-center mb-3">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            <small>{% trans "Golden Gate Park" %}</small>
+                            <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                        {% else %}
+                            <i class="bi bi-geo-alt me-2 text-primary"></i>
+                            <small>{% trans "Golden Gate Park" %}</small>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-primary">$149.50</span>
+                        <a href="{% url 'events:detail' slug='summer-music-festival' %}" class="btn btn-primary">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Book Now" %}
+                            {% else %}
+                                {% trans "Book Now" %}
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Startup Networking -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 border-0 hover-lift">
+                <div class="position-relative">
+                    <img src="{% static 'img/events/startup-networking.jpg' %}" class="card-img-top" alt="{% trans 'Startup Networking Event' %}">
+                    <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-3">
+                        <span class="badge bg-success p-2">{% trans "Business" %}</span>
+                    </div>
+                    <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-3 bg-gradient-dark text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    {% trans "August" %} 5, 2025<i class="bi bi-calendar ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-calendar me-2"></i>{% trans "August" %} 5, 2025
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    78 {% trans "going" %}<i class="bi bi-people ms-2"></i>
+                                {% else %}
+                                    <i class="bi bi-people me-2"></i>78 {% trans "going" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">{% trans "Startup Networking Event" %}</h3>
+                    <p class="card-text text-muted">{% trans "Connect with investors, founders, and industry experts in this exclusive networking event for the startup community." %}</p>
+                    <div class="d-flex align-items-center mb-3">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            <small>{% trans "Innovation Hub" %}</small>
+                            <i class="bi bi-geo-alt ms-2 text-primary"></i>
+                        {% else %}
+                            <i class="bi bi-geo-alt me-2 text-primary"></i>
+                            <small>{% trans "Innovation Hub" %}</small>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-primary">$45.00</span>
+                        <a href="{% url 'events:detail' slug='startup-networking-event' %}" class="btn btn-primary">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                {% trans "Book Now" %}
+                            {% else %}
+                                {% trans "Book Now" %}
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="container mb-5" data-aos="fade-up">
+    <h2 class="fw-bold text-center mb-1">{% trans "What Our Users Say" %}</h2>
+    <p class="text-center text-muted mb-5">{% trans "Discover why people love our platform" %}</p>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text mb-4">{% trans "\"This platform made finding local events so easy! I've discovered amazing concerts I would have missed otherwise.\"" %}</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">JD</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">{% trans "John Doe" %}</h6>
+                            <small class="text-muted">{% trans "Event Enthusiast" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text mb-4">{% trans "\"As an event organizer, this platform has helped me reach new audiences and manage bookings effortlessly.\"" %}</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">JS</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">{% trans "Jane Smith" %}</h6>
+                            <small class="text-muted">{% trans "Event Organizer" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <p class="card-text mb-4">{% trans "\"The booking process is seamless, and I love that I can see all my upcoming events in one place.\"" %}</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">RJ</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">{% trans "Robert Johnson" %}</h6>
+                            <small class="text-muted">{% trans "Regular Attendee" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- App Feature Section -->
+<div class="container mb-5" data-aos="fade-up">
+    <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">{% trans "Why Choose Us" %}</span>
+            <h2 class="fw-bold mb-4">{% trans "Booking Events Has Never Been" %} <span class="gradient-text">{% trans "This Easy" %}</span></h2>
+            
+            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %} mb-4">
+                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+                        <i class="bi bi-search text-primary fs-4"></i>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="fw-bold">{% trans "Discover Events" %}</h5>
+                    <p>{% trans "Easily find events that match your interests with our powerful search and filtering tools." %}</p>
+                </div>
+            </div>
+            
+            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %} mb-4">
+                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+                        <i class="bi bi-calendar-check text-primary fs-4"></i>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="fw-bold">{% trans "Instant Booking" %}</h5>
+                    <p>{% trans "Book tickets in seconds without any complicated checkout process." %}</p>
+                </div>
+            </div>
+            
+            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %}">
+                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+                        <i class="bi bi-bell text-primary fs-4"></i>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="fw-bold">{% trans "Event Reminders" %}</h5>
+                    <p>{% trans "Get notified about your upcoming events so you never miss out." %}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+            <div class="position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle bg-secondary rounded-circle bg-opacity-10" style="width: 300px; height: 300px; z-index: -1;"></div>
+                <img src="{% static 'img/sections/features.jpg' %}" class="img-fluid rounded-4 shadow" alt="{% trans 'App Features' %}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="bg-primary text-white py-5 mb-5" data-aos="fade-up">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h2 class="fw-bold display-5 mb-3">{% trans "Ready to Experience Amazing Events?" %}</h2>
+                <p class="lead mb-4">{% trans "Discover and book amazing events in your area. Never miss out on what matters most to you." %}</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'events:list' %}" class="btn btn-lg btn-light text-primary shadow-sm {% if LANGUAGE_CODE != 'ar' %}me-2{% else %}ms-2{% endif %}">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Browse Events" %}<i class="bi bi-search ms-2"></i>
+                        {% else %}
+                            <i class="bi bi-search me-2"></i>{% trans "Browse Events" %}
+                        {% endif %}
+                    </a>
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'users:register' %}" class="btn btn-lg btn-outline-light">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Sign Up" %}<i class="bi bi-person-plus ms-2"></i>
+                        {% else %}
+                            <i class="bi bi-person-plus me-2"></i>{% trans "Sign Up" %}
+                        {% endif %}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 rounded-4 shadow overflow-hidden">
+                    <img src="{% static 'img/sections/events.jpg' %}" alt="{% trans 'Event' %}" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter Section -->
+<div class="container mb-5" data-aos="fade-up">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+            <h2 class="fw-bold mb-3">{% trans "Stay Updated" %}</h2>
+            <p class="lead mb-4">{% trans "Subscribe to our newsletter to get the latest updates on events and special offers." %}</p>
+            <form class="d-flex gap-2 justify-content-center">
+                <div class="input-group shadow-sm" style="max-width: 500px;">
+                    <input type="email" class="form-control" placeholder="{% trans 'Your email address' %}" aria-label="{% trans 'Email address' %}">
+                    <button type="submit" class="btn btn-primary px-4">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            {% trans "Subscribe" %}<i class="bi bi-envelope-check ms-2"></i>
+                        {% else %}
+                            <i class="bi bi-envelope-check me-2"></i>{% trans "Subscribe" %}
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .gradient-text {
+        background: -webkit-linear-gradient(45deg, #4169E1, #9370DB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+    }
+    
+    .bg-gradient-dark {
+        background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .bg-accent-color {
+        background-color: #4169E1;
+    }
+    
+    html[dir="rtl"] .gradient-text {
+        background: -webkit-linear-gradient(270deg, #4169E1, #9370DB);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+    }
+    
+    html[dir="rtl"] .hero-heading span,
+    html[dir="rtl"] .navbar-brand span {
+        display: inline;
+    }
+</style>
+{% endblock %} 
