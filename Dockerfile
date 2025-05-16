@@ -25,10 +25,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
-# Verify the file exists and is in the correct location
-RUN ls -la /app/event_booking/settings_postgres.py && \
-    echo "Content of settings_postgres.py:" && \
-    cat /app/event_booking/settings_postgres.py
+# Debug: Show what files were copied and verify critical files
+RUN echo "Current directory structure:" && \
+    pwd && \
+    tree /app && \
+    echo "\nContents of event_booking directory:" && \
+    ls -la /app/event_booking/ && \
+    echo "\nVerifying critical files:" && \
+    test -f /app/event_booking/settings_postgres.py || (echo "ERROR: settings_postgres.py not found" && exit 1) && \
+    echo "settings_postgres.py found successfully"
 
 # Create a startup script with proper PostgreSQL waiting and error handling
 RUN echo '#!/bin/bash\n\
@@ -47,9 +52,6 @@ tree /app\n\
 \n\
 echo "Content of event_booking directory:"\n\
 ls -la /app/event_booking/\n\
-\n\
-echo "Content of settings_postgres.py:"\n\
-cat /app/event_booking/settings_postgres.py\n\
 \n\
 echo "Python path:"\n\
 python -c "import sys; print(\\"Python path:\\", sys.path)"\n\
