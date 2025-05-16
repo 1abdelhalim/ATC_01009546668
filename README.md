@@ -1,5 +1,7 @@
 # Evently - Event Booking System
 
+[🌐 **Live Demo on Azure**](https://evently-booking.azurewebsites.net)
+
 A full-stack event booking system built with Django, featuring a modern UI with HTMX and responsive design.
 
 ## 🌟 Features
@@ -22,67 +24,62 @@ A full-stack event booking system built with Django, featuring a modern UI with 
 
 - **Backend**: Django 5.0 + Django REST Framework
 - **Frontend**: Django Templates + HTMX
-- **Database**: SQLite (development)
-- **Deployment**: Docker
-- **CI/CD**: GitHub Actions
+- **Database**: SQLite (development) / PostgreSQL (production on Azure)
+- **Deployment**: Docker, Azure Web App for Containers
+- **CI/CD**: GitHub Actions (auto-deploys on push to main)
 - **Authentication**: Django Auth System
-- **API Documentation**: Swagger/ReDoc
+- **API Documentation**: Swagger
 - **Internationalization**: django-modeltranslation
 
 ## 🚀 Quick Start
 
 ### Local Development
 
-1. Clone the repository:
-```bash
-git clone https://github.com/1abdelhalim/Evently.git
-cd Evently
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/1abdelhalim/Evently.git
+   cd Evently
+   ```
+2. **Create and activate a virtual environment:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   # or
+   .\venv\Scripts\activate  # Windows
+   ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run migrations:**
+   ```bash
+   python manage.py migrate
+   ```
+5. **Create a superuser:**
+   ```bash
+   python manage.py createsuperuser
+   ```
+6. **(Optional) Generate sample data:**
+   ```bash
+   python create_sample_data.py
+   ```
+7. **Run the development server:**
+   ```bash
+   python manage.py runserver
+   ```
 
-2. Create and activate virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-.\venv\Scripts\activate  # Windows
-```
+### Production Deployment (Azure)
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+- The app is deployed to Azure Web App for Containers using Docker and GitHub Actions.
+- **Production database:** Azure Database for PostgreSQL (managed, scalable, secure)
+- **CI/CD:** On every push to `main`, GitHub Actions builds and deploys the Docker image to Azure.
+- **Secrets:** All sensitive settings (SECRET_KEY, DATABASE_URL, etc.) are managed via GitHub and Azure secrets.
 
-4. Run migrations:
-```bash
-python manage.py migrate
-```
-
-5. Create superuser:
-```bash
-python manage.py createsuperuser
-```
-
-6. Generate sample data (optional):
-```bash
-python create_sample_data.py
-```
-
-7. Run development server:
-```bash
-python manage.py runserver
-```
-
-### Docker Deployment
-
-1. Build the Docker image:
-```bash
-docker build -t evently .
-```
-
-2. Run the container:
-```bash
-docker run -p 8000:8000 evently
-```
+#### To deploy your own version:
+1. Fork and clone the repo.
+2. Set up your Azure resources (Resource Group, App Service Plan, Web App, Azure Container Registry, PostgreSQL DB).
+3. Add your Azure and database credentials as GitHub secrets.
+4. Push to `main` to trigger the workflow.
 
 ## 📦 Project Structure
 
@@ -149,11 +146,16 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🛠️ Built with AI Tools
 
 This project was built with assistance from:
-- Cursor AI: Code generation and refactoring
+- bolt.new: UI Design inspiration
 - GitHub Copilot: Code suggestions and completions
 - ChatGPT: Architecture planning and documentation
 
-## 🔗 Links
+## Running Unit Tests
 
-- [Live Demo](https://your-demo-url.com)
-- [API Documentation](https://your-demo-url.com/api/docs/)
+To run all unit tests, use:
+
+```
+python manage.py test
+```
+
+This will run tests for users, events, and bookings apps.
