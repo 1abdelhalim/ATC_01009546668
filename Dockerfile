@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
     postgresql-client \
+    tree \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
@@ -33,16 +34,27 @@ if [ -z "$DATABASE_URL" ]; then\n\
     exit 1\n\
 fi\n\
 \n\
+echo "Current working directory:"\n\
+pwd\n\
+\n\
+echo "Directory structure:"\n\
+tree /app\n\
+\n\
+echo "Content of event_booking directory:"\n\
+ls -la /app/event_booking/\n\
+\n\
+echo "Content of settings_postgres.py:"\n\
+cat /app/event_booking/settings_postgres.py\n\
+\n\
+echo "Python path:"\n\
+python -c "import sys; print(\\"Python path:\\", sys.path)"\n\
+\n\
+echo "Trying to import Django settings..."\n\
+python -c "import django; print(\\"Django version:\\", django.__version__); from django.conf import settings; print(\\"Settings module:\\", settings.SETTINGS_MODULE)"\n\
+\n\
 echo "Extracting database connection info..."\n\
 DB_HOST=$(echo $DATABASE_URL | sed -n "s/.*@\\(.*\\)\\/.*/\\1/p")\n\
 DB_NAME=$(echo $DATABASE_URL | sed -n "s/.*\\/\\([^\?]*\\).*/\\1/p")\n\
-\n\
-echo "Current directory and files:"\n\
-pwd\n\
-ls -la\n\
-\n\
-echo "Python path:"\n\
-python -c "import sys; print(sys.path)"\n\
 \n\
 echo "Waiting for PostgreSQL to be ready..."\n\
 until pg_isready -h $DB_HOST -q; do\n\
@@ -51,10 +63,10 @@ until pg_isready -h $DB_HOST -q; do\n\
 done\n\
 \n\
 echo "PostgreSQL is up - executing migrations"\n\
-PYTHONPATH=/app python manage.py migrate --noinput || { echo "Migration failed"; exit 1; }\n\
+DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py migrate --noinput || { echo "Migration failed"; exit 1; }\n\
 \n\
 echo "Collecting static files"\n\
-PYTHONPATH=/app python manage.py collectstatic --noinput || { echo "Static files collection failed"; exit 1; }\n\
+DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py collectstatic --noinput || { echo "Static files collection failed"; exit 1; }\n\
 \n\
 echo "Starting Gunicorn"\n\
 exec gunicorn --bind 0.0.0.0:${PORT:-8000} \\\n\
@@ -64,8 +76,15 @@ exec gunicorn --bind 0.0.0.0:${PORT:-8000} \\\n\
     --access-logfile - \\\n\
     --error-logfile - \\\n\
     --log-level debug \\\n\
+    --env DJANGO_SETTINGS_MODULE=event_booking.settings_postgres \\\n\
+    --env PYTHONPATH=/app \\\n\
     event_booking.wsgi:application\n\
 ' > /app/start.sh && chmod +x /app/start.sh
+
+# Verify the file exists and is in the correct location
+RUN ls -la /app/event_booking/settings_postgres.py && \
+    echo "Content of settings_postgres.py:" && \
+    cat /app/event_booking/settings_postgres.py
 
 # Run the startup script
 CMD ["/app/start.sh"] 
