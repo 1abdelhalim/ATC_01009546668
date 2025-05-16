@@ -25,4 +25,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # Run gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "event_booking.wsgi:application"] 
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-8000} event_booking.wsgi:application"] 
