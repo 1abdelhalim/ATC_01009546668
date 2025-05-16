@@ -6,6 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SETTINGS_MODULE=event_booking.settings_postgres
 ENV PYTHONPATH=/app
+ENV PORT=8000
 
 # Set work directory
 WORKDIR /app
@@ -59,6 +60,9 @@ python -c "import sys; print(\\"Python path:\\", sys.path)"\n\
 echo "Trying to import Django settings..."\n\
 python -c "import django; print(\\"Django version:\\", django.__version__); from django.conf import settings; print(\\"Settings module:\\", settings.SETTINGS_MODULE)"\n\
 \n\
+echo "Checking wsgi.py configuration:"\n\
+cat /app/event_booking/wsgi.py\n\
+\n\
 echo "Extracting database connection info..."\n\
 DB_HOST=$(echo $DATABASE_URL | sed -n "s/.*@\\(.*\\)\\/.*/\\1/p")\n\
 DB_NAME=$(echo $DATABASE_URL | sed -n "s/.*\\/\\([^\?]*\\).*/\\1/p")\n\
@@ -75,8 +79,16 @@ DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python ma
 echo "Collecting static files"\n\
 DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py collectstatic --noinput || { echo "Static files collection failed"; exit 1; }\n\
 \n\
-echo "Starting Gunicorn"\n\
-exec gunicorn --bind 0.0.0.0:${PORT:-8000} \\\n\
+# Determine port - use PORT env var or fall back to 8000\n\
+if [ -z "$PORT" ]; then\n\
+    PORT=8000\n\
+    echo "PORT not set, defaulting to $PORT"\n\
+else\n\
+    echo "Using PORT from environment: $PORT"\n\
+fi\n\
+\n\
+echo "Starting Gunicorn on port $PORT"\n\
+exec gunicorn --bind 0.0.0.0:$PORT \\\n\
     --workers=2 \\\n\
     --threads=4 \\\n\
     --timeout=120 \\\n\
