@@ -29,94 +29,16 @@ COPY . .
 # Debug: Show what files were copied and verify critical files
 RUN echo "Current directory structure:" && \
     pwd && \
-    tree /app && \
-    echo "\nContents of event_booking directory:" && \
-    ls -la /app/event_booking/ && \
+    ls -la && \
     echo "\nVerifying critical files:" && \
     test -f /app/event_booking/settings_postgres.py || (echo "ERROR: settings_postgres.py not found" && exit 1) && \
-    echo "settings_postgres.py found successfully"
+    echo "settings_postgres.py found successfully" && \
+    test -f /app/entrypoint.py || (echo "ERROR: entrypoint.py not found" && exit 1) && \
+    echo "entrypoint.py found successfully" && \
+    python -m compileall /app/event_booking
 
-# Create a startup script with proper PostgreSQL waiting and error handling
-RUN echo '#!/bin/bash\n\
-\n\
-echo "Checking environment variables..."\n\
-if [ -z "$DATABASE_URL" ]; then\n\
-    echo "ERROR: DATABASE_URL is not set"\n\
-    exit 1\n\
-fi\n\
-\n\
-echo "Current working directory:"\n\
-pwd\n\
-\n\
-echo "Directory structure:"\n\
-tree /app\n\
-\n\
-echo "Content of event_booking directory:"\n\
-ls -la /app/event_booking/\n\
-\n\
-echo "Python version:"\n\
-python --version\n\
-\n\
-echo "Python path:"\n\
-python -c "import sys; print(\\"Python path:\\", sys.path)"\n\
-\n\
-echo "Content of settings_postgres.py:"\n\
-cat /app/event_booking/settings_postgres.py\n\
-\n\
-echo "Content of wsgi.py:"\n\
-cat /app/event_booking/wsgi.py\n\
-\n\
-echo "Installed Python packages:"\n\
-pip list\n\
-\n\
-echo "Checking Django installation:"\n\
-python -c "import django; print(django.__version__)"\n\
-\n\
-echo "Checking dj-database-url installation:"\n\
-python -c "import dj_database_url; print(dj_database_url.__version__)"\n\
-\n\
-echo "Trying direct settings import:"\n\
-python -c "import event_booking.settings_postgres as settings; print(\\"Settings imported successfully\\")"\n\
-\n\
-echo "Checking DATABASE_URL:"\n\
-echo "DATABASE_URL=$DATABASE_URL"\n\
-\n\
-echo "Extracting database connection info..."\n\
-DB_HOST=$(echo $DATABASE_URL | sed -n "s/.*@\\(.*\\)\\/.*/\\1/p")\n\
-DB_NAME=$(echo $DATABASE_URL | sed -n "s/.*\\/\\([^\?]*\\).*/\\1/p")\n\
-\n\
-echo "Waiting for PostgreSQL to be ready..."\n\
-until pg_isready -h $DB_HOST -q; do\n\
-    echo "PostgreSQL is unavailable - sleeping"\n\
-    sleep 2\n\
-done\n\
-\n\
-echo "PostgreSQL is up - executing migrations"\n\
-DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py migrate --noinput --traceback -v 3 || { echo "Migration failed"; exit 1; }\n\
-\n\
-echo "Collecting static files"\n\
-DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py collectstatic --noinput --traceback -v 3 || { echo "Static files collection failed"; exit 1; }\n\
-\n\
-# Determine port - use PORT env var or fall back to 8000\n\
-if [ -z "$PORT" ]; then\n\
-    PORT=8000\n\
-    echo "PORT not set, defaulting to $PORT"\n\
-else\n\
-    echo "Using PORT from environment: $PORT"\n\
-fi\n\
-\n\
-echo "Starting Gunicorn on port $PORT"\n\
-exec gunicorn --bind 0.0.0.0:$PORT \\\n\
-    --workers=2 \\\n\
-    --threads=4 \\\n\
-    --timeout=120 \\\n\
-    --access-logfile - \\\n\
-    --error-logfile - \\\n\
-    --log-level debug \\\n\
-    --env DJANGO_SETTINGS_MODULE=event_booking.settings_postgres \\\n\
-    --env PYTHONPATH=/app \\\n\
-    event_booking.wsgi:application\n\
-' > /app/start.sh && chmod +x /app/start.sh
+# Ensure the entrypoint script is executable
+RUN chmod +x /app/entrypoint.py
 
-# Run the startup script
-CMD ["/app/start.sh"] 
+# Run the entrypoint script
+CMD ["python", "/app/entrypoint.py"] 
