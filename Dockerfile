@@ -25,6 +25,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
+# Verify the file exists and is in the correct location
+RUN ls -la /app/event_booking/settings_postgres.py && \
+    echo "Content of settings_postgres.py:" && \
+    cat /app/event_booking/settings_postgres.py
+
 # Create a startup script with proper PostgreSQL waiting and error handling
 RUN echo '#!/bin/bash\n\
 \n\
@@ -80,11 +85,6 @@ exec gunicorn --bind 0.0.0.0:${PORT:-8000} \\\n\
     --env PYTHONPATH=/app \\\n\
     event_booking.wsgi:application\n\
 ' > /app/start.sh && chmod +x /app/start.sh
-
-# Verify the file exists and is in the correct location
-RUN ls -la /app/event_booking/settings_postgres.py && \
-    echo "Content of settings_postgres.py:" && \
-    cat /app/event_booking/settings_postgres.py
 
 # Run the startup script
 CMD ["/app/start.sh"] 
