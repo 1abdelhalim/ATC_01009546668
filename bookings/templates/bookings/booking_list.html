@@ -17,8 +17,16 @@
                 <div class="position-relative">
                     {% if booking.event.image %}
                     <img src="{{ booking.event.image.url }}" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
+                    {% elif booking.event.name == "Marathon Championships" %}
+                    <img src="/media/events/Marathon%20Championships.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
+                    {% elif booking.event.name == "Web Development Conference" %}
+                    <img src="/media/events/AI%20and%20Machine%20Learning%20Workshop.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
+                    {% elif booking.event.name == "Basketball Tournament" %}
+                    <img src="/media/events/Basketball%20Tournament.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
+                    {% elif booking.event.name == "Summer Sounds Music Festival" %}
+                    <img src="/media/events/Jazz%20Night.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
                     {% else %}
-                    <img src="https://source.unsplash.com/random/300x180?event&sig={{ forloop.counter }}" class="card-img-top" alt="{% trans 'Event Image' %}" style="height: 180px; object-fit: cover;">
+                    <img src="https://robohash.org/{{ booking.event.id }}?set=set2&size=600x400" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
                     {% endif %}
                     <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
                         <span class="badge bg-{{ booking.get_status_color }} px-3 py-2">{{ booking.get_status_display }}</span>

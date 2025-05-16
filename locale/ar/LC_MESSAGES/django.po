@@ -3,6 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-15 22:19+0000\n"
 "PO-Revision-Date: 2023-05-15\n"
 "Last-Translator: AI Assistant\n"
 "Language-Team: Arabic\n"
@@ -10,581 +11,2715 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-msgid "Home"
-msgstr "الرئيسية"
-
-msgid "Events"
-msgstr "الفعاليات"
-
-msgid "My Bookings"
-msgstr "حجوزاتي"
-
-msgid "Login"
-msgstr "تسجيل الدخول"
-
-msgid "Register"
-msgstr "تسجيل"
-
-msgid "Logout"
-msgstr "تسجيل الخروج"
-
-msgid "Profile"
-msgstr "الملف الشخصي"
-
-msgid "Admin Dashboard"
-msgstr "لوحة التحكم"
-
-msgid "Account"
-msgstr "الحساب"
-
-msgid "About This Event"
-msgstr "عن هذه الفعالية"
-
-msgid "Date"
-msgstr "التاريخ"
-
-msgid "Time"
-msgstr "الوقت"
-
-msgid "Location"
-msgstr "الموقع"
-
-msgid "Price"
-msgstr "السعر"
-
-msgid "Book Now"
-msgstr "احجز الآن"
-
-msgid "Booked"
-msgstr "تم الحجز"
-
-msgid "Available"
-msgstr "متوفر"
-
-msgid "Sold Out"
-msgstr "نفدت التذاكر"
-
-msgid "Organizer"
-msgstr "المنظم"
-
-msgid "View Profile"
-msgstr "عرض الملف الشخصي"
-
-msgid "Share"
-msgstr "مشاركة"
-
-msgid "Save"
-msgstr "حفظ"
-
-msgid "per person"
-msgstr "للشخص"
-
-msgid "Book Tickets"
-msgstr "حجز التذاكر"
-
-msgid "Booking Details"
-msgstr "تفاصيل الحجز"
-
-msgid "Booking Reference"
-msgstr "رقم الحجز"
-
-msgid "Booking Date"
-msgstr "تاريخ الحجز"
-
-msgid "Total Amount"
-msgstr "المبلغ الإجمالي"
-
-msgid "Cancel Booking"
-msgstr "إلغاء الحجز"
-
-msgid "View Details"
-msgstr "عرض التفاصيل"
-
-msgid "Username"
-msgstr "اسم المستخدم"
-
-msgid "Password"
-msgstr "كلمة المرور"
-
-msgid "Email"
-msgstr "البريد الإلكتروني"
-
-msgid "Sign In"
-msgstr "تسجيل الدخول"
-
-msgid "Sign Up"
-msgstr "إنشاء حساب"
-
-msgid "Welcome Back"
-msgstr "مرحباً بعودتك"
-
-msgid "Remember me"
-msgstr "تذكرني"
-
-msgid "Forgot Password?"
-msgstr "نسيت كلمة المرور؟"
-
-msgid "Don't have an account?"
-msgstr "ليس لديك حساب؟"
-
-msgid "Previous"
-msgstr "السابق"
-
-msgid "Next"
-msgstr "التالي"
-
-msgid "English"
-msgstr "الإنجليزية"
-
-msgid "Arabic"
-msgstr "العربية"
-
-msgid "Toggle Dark/Light Mode"
-msgstr "تبديل الوضع المظلم/الفاتح"
-
-msgid "Event Booking"
-msgstr "حجز الفعاليات"
-
-msgid "Quick Links"
-msgstr "روابط سريعة"
-
-msgid "Support"
-msgstr "الدعم"
-
-msgid "Stay Updated"
-msgstr "ابق على اطلاع"
-
-msgid "Subscribe"
-msgstr "اشترك"
-
-msgid "Your email"
-msgstr "بريدك الإلكتروني"
-
-msgid "About Us"
-msgstr "من نحن"
-
-msgid "Contact"
-msgstr "اتصل بنا"
-
-msgid "Help Center"
-msgstr "مركز المساعدة"
-
-msgid "FAQ"
-msgstr "الأسئلة الشائعة"
-
-msgid "Privacy Policy"
-msgstr "سياسة الخصوصية"
-
-msgid "Terms of Service"
-msgstr "شروط الخدمة"
-
-msgid "Subscribe to our newsletter for the latest events and offers."
-msgstr "اشترك في نشرتنا الإخبارية للحصول على أحدث الفعاليات والعروض."
-
-msgid "Event Booking System. All rights reserved."
-msgstr "نظام حجز الفعاليات. جميع الحقوق محفوظة."
-
-msgid "Welcome"
-msgstr "مرحباً"
-
-msgid "Food and beverages will be available for purchase. No outside food allowed."
-msgstr "الطعام والمشروبات متوفرة للشراء. غير مسموح بإدخال طعام من الخارج."
-
-msgid "Discover and book amazing events in your area. Never miss out on what matters most to you."
-msgstr "اكتشف واحجز فعاليات مذهلة في منطقتك. لا تفوت ما يهمك."
-
-msgid "Find Your Next Experience"
-msgstr "ابحث عن تجربتك القادمة"
-
-msgid "Discover"
-msgstr "استكشف"
-
-msgid "Amazing Events"
-msgstr "فعاليات رائعة"
-
-msgid "Near You"
-msgstr "بالقرب منك"
-
-msgid "Find and book the most exciting events in your area. From concerts to workshops, we've got you covered."
-msgstr "ابحث واحجز أكثر الفعاليات إثارة في منطقتك. من الحفلات الموسيقية إلى ورش العمل، لدينا كل ما تحتاجه."
-
-msgid "Browse Events"
-msgstr "تصفح الفعاليات"
-
-msgid "Search events..."
-msgstr "البحث عن فعاليات..."
-
-msgid "Search events"
-msgstr "البحث عن فعاليات"
-
-msgid "Search"
-msgstr "بحث"
-
-msgid "Events Monthly"
-msgstr "فعالية شهرياً"
-
-msgid "Happy Users"
-msgstr "مستخدم سعيد"
-
-msgid "Categories"
-msgstr "فئات"
-
-msgid "Satisfaction Rate"
-msgstr "معدل الرضا"
-
-msgid "Browse by Category"
-msgstr "تصفح حسب الفئة"
-
-msgid "Find events that match your interests"
-msgstr "ابحث عن فعاليات تناسب اهتماماتك"
-
-msgid "Concerts"
-msgstr "حفلات موسيقية"
-
-msgid "Workshops"
-msgstr "ورش عمل"
-
-msgid "Food & Drinks"
-msgstr "طعام ومشروبات"
-
-msgid "Entertainment"
-msgstr "ترفيه"
-
-msgid "Networking"
-msgstr "العلاقات المهنية"
-
-msgid "Upcoming Events"
-msgstr "الفعاليات القادمة"
-
-msgid "View All"
-msgstr "عرض الكل"
-
-msgid "Don't miss out on these exciting events happening soon"
-msgstr "لا تفوت هذه الفعاليات المثيرة القادمة قريباً"
-
-msgid "Category"
-msgstr "الفئة"
-
-msgid "May"
-msgstr "مايو"
-
-msgid "going"
-msgstr "متوجه"
-
-msgid "Event Title"
-msgstr "عنوان الفعالية"
-
-msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris."
-msgstr "يمكنك الآن حجز الفعاليات بسهولة من خلال منصتنا."
-
-msgid "Event Location"
-msgstr "موقع الفعالية"
-
-msgid "What Our Users Say"
-msgstr "ماذا يقول مستخدمينا"
-
-msgid "Discover why people love our platform"
-msgstr "اكتشف لماذا يحب الناس منصتنا"
-
-msgid "\"This platform made finding local events so easy! I've discovered amazing concerts I would have missed otherwise.\""
-msgstr "هذه المنصة جعلت العثور على الفعاليات المحلية سهلاً جداً! لقد اكتشفت حفلات موسيقية رائعة كنت سأفوتها لولا ذلك."
-
-msgid "John Doe"
-msgstr "محمد أحمد"
-
-msgid "Event Enthusiast"
-msgstr "مهتم بالفعاليات"
-
-msgid "\"As an event organizer, this platform has helped me reach new audiences and manage bookings effortlessly.\""
-msgstr "كمنظم فعاليات، ساعدتني هذه المنصة في الوصول إلى جماهير جديدة وإدارة الحجوزات بسهولة."
-
-msgid "Jane Smith"
-msgstr "سارة خالد"
-
-msgid "Event Organizer"
-msgstr "منظم فعاليات"
-
-msgid "\"The booking process is seamless, and I love that I can see all my upcoming events in one place.\""
-msgstr "عملية الحجز سلسة، وأحب أنني أستطيع رؤية جميع الفعاليات القادمة في مكان واحد."
-
-msgid "Robert Johnson"
-msgstr "أحمد محمود"
-
-msgid "Regular Attendee"
-msgstr "حاضر منتظم"
-
-msgid "Ready to Experience Amazing Events?"
-msgstr "هل أنت مستعد لتجربة فعاليات مذهلة؟"
-
-msgid "Your email address"
-msgstr "عنوان بريدك الإلكتروني"
-
-msgid "Email address"
-msgstr "عنوان البريد الإلكتروني"
-
-msgid "Subscribe to our newsletter to get the latest updates on events and special offers."
-msgstr "اشترك في نشرتنا الإخبارية للحصول على آخر التحديثات حول الفعاليات والعروض الخاصة."
-
-msgid "Discover Events"
-msgstr "اكتشف الفعاليات"
-
-msgid "Find the perfect event for you"
-msgstr "ابحث عن الفعالية المناسبة لك"
-
-msgid "Sort By"
-msgstr "ترتيب حسب"
-
-msgid "Upcoming"
-msgstr "القادمة"
-
-msgid "Price: Low to High"
-msgstr "السعر: من الأقل إلى الأعلى"
-
-msgid "Price: High to Low"
-msgstr "السعر: من الأعلى إلى الأقل"
-
-msgid "Most Popular"
-msgstr "الأكثر شعبية"
-
-msgid "Filters"
-msgstr "تصفية"
-
-msgid "Today"
-msgstr "اليوم"
-
-msgid "Tomorrow"
-msgstr "غداً"
-
-msgid "This Weekend"
-msgstr "نهاية الأسبوع"
-
-msgid "This Week"
-msgstr "هذا الأسبوع"
-
-msgid "This Month"
-msgstr "هذا الشهر"
-
-msgid "$0 - $50"
-msgstr "0 - 50 دولار"
-
-msgid "$50 - $100"
-msgstr "50 - 100 دولار"
-
-msgid "$100+"
-msgstr "أكثر من 100 دولار"
-
-msgid "Apply Filters"
-msgstr "تطبيق التصفية"
-
-msgid "tickets available"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: bookings/templates/bookings/booking_create.html:11
+msgid "Complete Your Booking"
+msgstr ""
+
+#: bookings/templates/bookings/booking_create.html:66
+#, fuzzy
+#| msgid "tickets available"
+msgid "tickets left"
 msgstr "تذكرة متاحة"
 
+#: bookings/templates/bookings/booking_create.html:66
+#: events/templates/events/event_list.html:248
+#: events/templates/events/event_list.html:250
 msgid "total"
 msgstr "الإجمالي"
 
-msgid "No events found matching your criteria."
-msgstr "لم يتم العثور على فعاليات مطابقة لمعاييرك"
+#: bookings/templates/bookings/booking_create.html:78
+#: bookings/templates/bookings/booking_detail.html:96
+#, fuzzy
+#| msgid "Book Tickets"
+msgid "Number of Tickets"
+msgstr "حجز التذاكر"
 
-msgid "Event"
-msgstr "فعالية"
+#: bookings/templates/bookings/booking_create.html:90
+msgid "Price per ticket"
+msgstr ""
 
-msgid "Booking"
-msgstr "حجز"
+#: bookings/templates/bookings/booking_create.html:97
+#, fuzzy
+#| msgid "total"
+msgid "Total"
+msgstr "الإجمالي"
 
-msgid "Why Choose Us"
-msgstr "لماذا تختارنا"
+#: bookings/templates/bookings/booking_create.html:102
+#, fuzzy
+#| msgid "Cancel Booking"
+msgid "Cancel"
+msgstr "إلغاء الحجز"
 
-msgid "Booking Events Has Never Been"
-msgstr "حجز الفعاليات لم يكن أبداً"
+#: bookings/templates/bookings/booking_create.html:106
+#: bookings/templates/bookings/booking_create.html:108
+#, fuzzy
+#| msgid "Cancel Booking"
+msgid "Confirm Booking"
+msgstr "إلغاء الحجز"
 
-msgid "This Easy"
-msgstr "بهذه السهولة"
+#: bookings/templates/bookings/booking_create.html:120
+#, fuzzy
+#| msgid "View Details"
+msgid "Event Details"
+msgstr "عرض التفاصيل"
 
-msgid "Easily find events that match your interests with our powerful search and filtering tools."
-msgstr "اعثر بسهولة على الفعاليات التي تناسب اهتماماتك من خلال أدوات البحث والتصفية القوية لدينا."
+#: bookings/templates/bookings/booking_create.html:125
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Important Information"
+msgstr "المعلومات الشخصية"
 
-msgid "Instant Booking"
-msgstr "حجز فوري"
+#: bookings/templates/bookings/booking_create.html:129
+msgid "Please arrive 15 minutes before the event starts."
+msgstr ""
 
-msgid "Book tickets in seconds without any complicated checkout process."
-msgstr "احجز التذاكر في ثوانٍ دون أي عملية دفع معقدة."
+#: bookings/templates/bookings/booking_create.html:133
+msgid ""
+"Booking confirmation email will be sent to your registered email address."
+msgstr ""
 
-msgid "Event Reminders"
-msgstr "تذكيرات الفعاليات"
+#: bookings/templates/bookings/booking_create.html:137
+msgid "Cancellations are available up to 24 hours before event start."
+msgstr ""
 
-msgid "Get notified about your upcoming events so you never miss out."
-msgstr "احصل على إشعارات حول الفعاليات القادمة حتى لا تفوتك أبداً."
+#: bookings/templates/bookings/booking_detail.html:8
+#: events/templates/events/event_detail.html:9 templates/base.html:66
+#: templates/base.html:212
+msgid "Home"
+msgstr "الرئيسية"
 
-msgid "App Features"
-msgstr "ميزات التطبيق"
+#: bookings/templates/bookings/booking_detail.html:9
+#: bookings/templates/bookings/booking_list.html:8 templates/base.html:73
+msgid "My Bookings"
+msgstr "حجوزاتي"
 
+#: bookings/templates/bookings/booking_detail.html:10
+msgid "Booking Details"
+msgstr "تفاصيل الحجز"
+
+#: bookings/templates/bookings/booking_detail.html:22
+#: bookings/templates/bookings/booking_list.html:21
+#, fuzzy
+#| msgid "Event Title"
+msgid "Event Image"
+msgstr "عنوان الفعالية"
+
+#: bookings/templates/bookings/booking_detail.html:44
+#: events/templates/events/event_detail.html:60
+#: events/templates/events/event_list.html:53
+msgid "Date"
+msgstr "التاريخ"
+
+#: bookings/templates/bookings/booking_detail.html:55
+#: events/templates/events/event_detail.html:71
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2520
+msgid "Time"
+msgstr "الوقت"
+
+#: bookings/templates/bookings/booking_detail.html:66
+msgid "Venue"
+msgstr ""
+
+#: bookings/templates/bookings/booking_detail.html:81
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Booking Information"
+msgstr "المعلومات الشخصية"
+
+#: bookings/templates/bookings/booking_detail.html:86
+msgid "Booking Reference"
+msgstr "رقم الحجز"
+
+#: bookings/templates/bookings/booking_detail.html:92
+msgid "Booking Date"
+msgstr "تاريخ الحجز"
+
+#: bookings/templates/bookings/booking_detail.html:100
+msgid "Price per Ticket"
+msgstr ""
+
+#: bookings/templates/bookings/booking_detail.html:105
+msgid "Total Amount"
+msgstr "المبلغ الإجمالي"
+
+#: bookings/templates/bookings/booking_detail.html:114
+#: bookings/templates/bookings/booking_detail.html:116
+msgid "Cancel Booking"
+msgstr "إلغاء الحجز"
+
+#: bookings/templates/bookings/booking_detail.html:126
+#, fuzzy
+#| msgid "Booking Reference"
+msgid "Booking Protected"
+msgstr "رقم الحجز"
+
+#: bookings/templates/bookings/booking_detail.html:127
+msgid "Full refund up to 7 days before the event."
+msgstr ""
+
+#: bookings/templates/bookings/booking_list.html:9
+#, fuzzy
+#| msgid "Your Recent Bookings"
+msgid "Manage your event bookings"
+msgstr "حجوزاتك الأخيرة"
+
+#: bookings/templates/bookings/booking_list.html:55
+#, fuzzy
+#| msgid "Book Tickets"
+msgid "tickets"
+msgstr "حجز التذاكر"
+
+#: bookings/templates/bookings/booking_list.html:66
+#: bookings/templates/bookings/booking_list.html:68
+#: templates/base/home.html:227
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+#: bookings/templates/bookings/booking_list.html:86
+#, fuzzy
+#| msgid "No bookings yet"
+msgid "No Bookings Yet"
+msgstr "لا توجد حجوزات بعد"
+
+#: bookings/templates/bookings/booking_list.html:87
+msgid "You haven't made any bookings yet. Start exploring events!"
+msgstr ""
+
+#: bookings/templates/bookings/booking_list.html:89
+#, fuzzy
+#| msgid "Browse Events"
+msgid "Explore Events"
+msgstr "تصفح الفعاليات"
+
+#: bookings/templates/bookings/booking_list.html:101
+#: events/templates/events/event_list.html:272
+#: events/templates/events/event_list.html:276
+msgid "Previous"
+msgstr "السابق"
+
+#: bookings/templates/bookings/booking_list.html:115
+#: events/templates/events/event_list.html:290
+#: events/templates/events/event_list.html:294
+msgid "Next"
+msgstr "التالي"
+
+#: event_booking/settings.py:136
+msgid "English"
+msgstr "الإنجليزية"
+
+#: event_booking/settings.py:137
+msgid "Arabic"
+msgstr "العربية"
+
+#: events/templates/events/event_detail.html:10 templates/base.html:69
+#: templates/base.html:213 templates/base/home.html:68 templates/home.html:73
+msgid "Events"
+msgstr "الفعاليات"
+
+#: events/templates/events/event_detail.html:43
+msgid "Share"
+msgstr "مشاركة"
+
+#: events/templates/events/event_detail.html:46
+msgid "Save"
+msgstr "حفظ"
+
+#: events/templates/events/event_detail.html:82
+#: events/templates/events/event_detail.html:130
+msgid "Location"
+msgstr "الموقع"
+
+#: events/templates/events/event_detail.html:93
+msgid "About This Event"
+msgstr "عن هذه الفعالية"
+
+#: events/templates/events/event_detail.html:100
+msgid ""
+"Food and beverages will be available for purchase. No outside food allowed."
+msgstr "الطعام والمشروبات متوفرة للشراء. غير مسموح بإدخال طعام من الخارج."
+
+#: events/templates/events/event_detail.html:108
+msgid "Organizer"
+msgstr "المنظم"
+
+#: events/templates/events/event_detail.html:117
+#, python-format
+msgid "Organizer of %(count)s events"
+msgstr ""
+
+#: events/templates/events/event_detail.html:120
+msgid "View Profile"
+msgstr "عرض الملف الشخصي"
+
+#: events/templates/events/event_detail.html:146
+msgid "Book Tickets"
+msgstr "حجز التذاكر"
+
+#: events/templates/events/event_detail.html:151
+#: events/templates/events/event_list.html:112
+msgid "Price"
+msgstr "السعر"
+
+#: events/templates/events/event_detail.html:152
+msgid "Available"
+msgstr "متوفر"
+
+#: events/templates/events/event_detail.html:156
+msgid "per person"
+msgstr "للشخص"
+
+#: events/templates/events/event_detail.html:163
+#: events/templates/events/event_detail.html:165
+#: events/templates/events/event_detail.html:249
+#: events/templates/events/event_detail.html:251
+#: events/templates/events/event_list.html:231
+#: events/templates/events/event_list.html:233
+msgid "Sold Out"
+msgstr "نفدت التذاكر"
+
+#: events/templates/events/event_detail.html:171
+#: events/templates/events/event_detail.html:173
+#: events/templates/events/event_detail.html:241
+#: events/templates/events/event_detail.html:243
+#: events/templates/events/event_list.html:223
+#: events/templates/events/event_list.html:225
+msgid "Booked"
+msgstr "تم الحجز"
+
+#: events/templates/events/event_detail.html:179
+#: events/templates/events/event_detail.html:181
+#: events/templates/events/event_list.html:239
+#: events/templates/events/event_list.html:241 templates/home.html:225
+#: templates/home.html:227 templates/home.html:278 templates/home.html:280
+#: templates/home.html:331 templates/home.html:333
+msgid "Book Now"
+msgstr "احجز الآن"
+
+#: events/templates/events/event_detail.html:188
+#, fuzzy, python-format
+#| msgid "tickets available"
+msgid "%(count)s tickets available"
+msgstr "تذكرة متاحة"
+
+#: events/templates/events/event_detail.html:197
 msgid "You Might Also Like"
 msgstr "قد يعجبك أيضاً"
 
+#: events/templates/events/event_detail.html:198
 msgid "Discover similar events happening nearby"
 msgstr "اكتشف فعاليات مماثلة تحدث بالقرب منك"
 
+#: events/templates/events/event_detail.html:257
+#: events/templates/events/event_detail.html:259
 msgid "View"
 msgstr "عرض"
 
-msgid "January"
-msgstr "يناير"
+#: events/templates/events/event_list.html:11 templates/home.html:428
+msgid "Discover Events"
+msgstr "اكتشف الفعاليات"
 
-msgid "February"
-msgstr "فبراير"
+#: events/templates/events/event_list.html:12
+msgid "Find the perfect event for you"
+msgstr "ابحث عن الفعالية المناسبة لك"
 
-msgid "March"
-msgstr "مارس"
+#: events/templates/events/event_list.html:18
+#: events/templates/events/event_list.html:20
+msgid "Sort By"
+msgstr "ترتيب حسب"
 
-msgid "April"
-msgstr "أبريل"
+#: events/templates/events/event_list.html:24
+msgid "Upcoming"
+msgstr "القادمة"
 
-msgid "June"
-msgstr "يونيو"
+#: events/templates/events/event_list.html:25
+msgid "Price: Low to High"
+msgstr "السعر: من الأقل إلى الأعلى"
 
-msgid "July"
-msgstr "يوليو"
+#: events/templates/events/event_list.html:26
+msgid "Price: High to Low"
+msgstr "السعر: من الأعلى إلى الأقل"
 
-msgid "August"
-msgstr "أغسطس"
+#: events/templates/events/event_list.html:27
+msgid "Most Popular"
+msgstr "الأكثر شعبية"
 
-msgid "September"
-msgstr "سبتمبر"
+#: events/templates/events/event_list.html:39
+msgid "Filters"
+msgstr "تصفية"
 
-msgid "October"
-msgstr "أكتوبر"
+#: events/templates/events/event_list.html:57
+msgid "Today"
+msgstr "اليوم"
 
-msgid "November"
-msgstr "نوفمبر"
+#: events/templates/events/event_list.html:62
+msgid "Tomorrow"
+msgstr "غداً"
 
-msgid "December"
-msgstr "ديسمبر"
+#: events/templates/events/event_list.html:67
+msgid "This Weekend"
+msgstr "نهاية الأسبوع"
 
-msgid "Startup Networking Event"
-msgstr "فعالية التواصل للشركات الناشئة"
+#: events/templates/events/event_list.html:72
+msgid "This Week"
+msgstr "هذا الأسبوع"
 
-msgid "Annual Tech Innovation Conference"
-msgstr "المؤتمر السنوي للابتكار التقني"
+#: events/templates/events/event_list.html:77
+msgid "This Month"
+msgstr "هذا الشهر"
 
-msgid "San Francisco Convention Center"
-msgstr "مركز مؤتمرات سان فرانسيسكو"
+#: events/templates/events/event_list.html:82
+#: events/templates/events/event_list.html:104
+#: events/templates/events/event_list.html:136
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:461
+msgid "Clear"
+msgstr ""
 
-msgid "Join industry leaders and innovators for a full day of inspiring talks about the latest technology trends."
-msgstr "انضم إلى قادة الصناعة والمبتكرين ليوم كامل من المحادثات الملهمة حول أحدث اتجاهات التكنولوجيا."
+#: events/templates/events/event_list.html:90
+msgid "Category"
+msgstr "الفئة"
 
-msgid "Summer Sounds Music Festival"
-msgstr "مهرجان أصوات الصيف الموسيقي"
+#: events/templates/events/event_list.html:99
+#, fuzzy
+#| msgid "tickets available"
+msgid "No categories available."
+msgstr "تذكرة متاحة"
 
-msgid "Golden Gate Park"
-msgstr "حديقة جولدن جيت"
+#: events/templates/events/event_list.html:116
+msgid "Free"
+msgstr ""
 
-msgid "Three days of incredible live performances from top artists across multiple stages in a beautiful outdoor setting."
-msgstr "ثلاثة أيام من العروض الحية المذهلة من كبار الفنانين على مسارح متعددة في أجواء خارجية جميلة."
+#: events/templates/events/event_list.html:121
+msgid "$0 - $50"
+msgstr "0 - 50 دولار"
 
-msgid "Innovation Hub"
-msgstr "مركز الابتكار"
+#: events/templates/events/event_list.html:126
+msgid "$50 - $100"
+msgstr "50 - 100 دولار"
 
-msgid "Connect with investors, founders, and industry experts in this exclusive networking event for the startup community."
-msgstr "تواصل مع المستثمرين والمؤسسين وخبراء الصناعة في هذه الفعالية الحصرية للتواصل لمجتمع الشركات الناشئة."
+#: events/templates/events/event_list.html:131
+msgid "$100+"
+msgstr "أكثر من 100 دولار"
 
-msgid "Our Categories"
+#: events/templates/events/event_list.html:142
+msgid "Apply Filters"
+msgstr "تطبيق التصفية"
+
+#: events/templates/events/event_list.html:146
+#, fuzzy
+#| msgid "Apply Filters"
+msgid "Clear All Filters"
+msgstr "تطبيق التصفية"
+
+#: events/templates/events/event_list.html:182
+msgid "Only"
+msgstr ""
+
+#: events/templates/events/event_list.html:182
+msgid "left"
+msgstr ""
+
+#: events/templates/events/event_list.html:248
+#: events/templates/events/event_list.html:250
+msgid "tickets available"
+msgstr "تذكرة متاحة"
+
+#: events/templates/events/event_list.html:260
+msgid "No events found matching your criteria."
+msgstr "لم يتم العثور على فعاليات مطابقة لمعاييرك"
+
+#: templates/base.html:6 templates/base/home.html:5
+#, fuzzy
+#| msgid "Ready to Experience Amazing Events?"
+msgid "Evently - Discover Amazing Events"
+msgstr "هل أنت مستعد لتجربة فعاليات مذهلة؟"
+
+#: templates/base.html:104
+msgid "Toggle Dark/Light Mode"
+msgstr "تبديل الوضع المظلم/الفاتح"
+
+#: templates/base.html:110
+msgid "Welcome"
+msgstr "مرحباً"
+
+#: templates/base.html:114 templates/base.html:118
+msgid "Account"
+msgstr "الحساب"
+
+#: templates/base.html:124 templates/base.html:128
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: templates/base.html:134 templates/base.html:138
+msgid "Admin Dashboard"
+msgstr "لوحة التحكم"
+
+#: templates/base.html:145 templates/base.html:149
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/base.html:157 templates/base.html:161
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/base.html:166 templates/base.html:170
+msgid "Register"
+msgstr "تسجيل"
+
+#: templates/base.html:201 templates/home.html:472
+msgid ""
+"Discover and book amazing events in your area. Never miss out on what "
+"matters most to you."
+msgstr "اكتشف واحجز فعاليات مذهلة في منطقتك. لا تفوت ما يهمك."
+
+#: templates/base.html:210
+msgid "Quick Links"
+msgstr "روابط سريعة"
+
+#: templates/base.html:214
+msgid "About Us"
+msgstr "من نحن"
+
+#: templates/base.html:215
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: templates/base.html:219
+msgid "Support"
+msgstr "الدعم"
+
+#: templates/base.html:221
+msgid "Help Center"
+msgstr "مركز المساعدة"
+
+#: templates/base.html:222
+msgid "FAQ"
+msgstr "الأسئلة الشائعة"
+
+#: templates/base.html:223 templates/base.html:245
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#: templates/base.html:224 templates/base.html:246
+msgid "Terms of Service"
+msgstr "شروط الخدمة"
+
+#: templates/base.html:228 templates/home.html:505
+msgid "Stay Updated"
+msgstr "ابق على اطلاع"
+
+#: templates/base.html:229
+msgid "Subscribe to our newsletter for the latest events and offers."
+msgstr "اشترك في نشرتنا الإخبارية للحصول على أحدث الفعاليات والعروض."
+
+#: templates/base.html:232
+msgid "Your email"
+msgstr "بريدك الإلكتروني"
+
+#: templates/base.html:233 templates/home.html:512 templates/home.html:514
+msgid "Subscribe"
+msgstr "اشترك"
+
+#: templates/base.html:241
+#, fuzzy
+#| msgid "Event Booking System. All rights reserved."
+msgid "All rights reserved."
+msgstr "نظام حجز الفعاليات. جميع الحقوق محفوظة."
+
+#: templates/base/home.html:14 templates/home.html:12
+msgid "Find Your Next Experience"
+msgstr "ابحث عن تجربتك القادمة"
+
+#: templates/base/home.html:18 templates/base/home.html:20
+#: templates/home.html:15 templates/home.html:17
+msgid "Near You"
+msgstr "بالقرب منك"
+
+#: templates/base/home.html:18 templates/base/home.html:20
+#: templates/home.html:15 templates/home.html:17
+msgid "Amazing Events"
+msgstr "فعاليات رائعة"
+
+#: templates/base/home.html:18 templates/base/home.html:20
+#: templates/home.html:15 templates/home.html:17
+msgid "Discover"
+msgstr "استكشف"
+
+#: templates/base/home.html:24 templates/home.html:20
+msgid ""
+"Find and book the most exciting events in your area. From concerts to "
+"workshops, we've got you covered."
+msgstr ""
+"ابحث واحجز أكثر الفعاليات إثارة في منطقتك. من الحفلات الموسيقية إلى ورش "
+"العمل، لدينا كل ما تحتاجه."
+
+#: templates/base/home.html:30 templates/base/home.html:34
+#: templates/home.html:24 templates/home.html:26 templates/home.html:476
+#: templates/home.html:478 users/templates/users/profile.html:144
+#: users/templates/users/profile.html:146
+msgid "Browse Events"
+msgstr "تصفح الفعاليات"
+
+#: templates/base/home.html:40 templates/base/home.html:44
+#, fuzzy
+#| msgid "Account"
+msgid "Create Account"
+msgstr "الحساب"
+
+#: templates/base/home.html:53 templates/home.html:48 templates/home.html:50
+msgid "Search events..."
+msgstr "البحث عن فعاليات..."
+
+#: templates/base/home.html:53 templates/home.html:48 templates/home.html:50
+msgid "Search events"
+msgstr "البحث عن فعاليات"
+
+#: templates/base/home.html:56 templates/home.html:58 templates/home.html:60
+msgid "Search"
+msgstr "بحث"
+
+#: templates/base/home.html:85 templates/home.html:87
+msgid "Events Monthly"
+msgstr "فعالية شهرياً"
+
+#: templates/base/home.html:94 templates/home.html:95
+msgid "Happy Users"
+msgstr "مستخدم سعيد"
+
+#: templates/base/home.html:103 templates/home.html:103
+#: users/templates/users/profile.html:94
+msgid "Categories"
+msgstr "فئات"
+
+#: templates/base/home.html:112 templates/home.html:111
+msgid "Satisfaction Rate"
+msgstr "معدل الرضا"
+
+#: templates/base/home.html:123
+#, fuzzy
+#| msgid "Our Categories"
+msgid "Explore Categories"
 msgstr "فئاتنا"
 
-msgid "Technology"
-msgstr "التكنولوجيا"
+#: templates/base/home.html:124 templates/home.html:121
+msgid "Find events that match your interests"
+msgstr "ابحث عن فعاليات تناسب اهتماماتك"
 
+#: templates/base/home.html:135 templates/home.html:241
 msgid "Music"
 msgstr "موسيقى"
 
+#: templates/base/home.html:147 templates/home.html:188
+msgid "Technology"
+msgstr "التكنولوجيا"
+
+#: templates/base/home.html:159 templates/home.html:154
+msgid "Networking"
+msgstr "العلاقات المهنية"
+
+#: templates/base/home.html:171 templates/home.html:166
+msgid "Entertainment"
+msgstr "ترفيه"
+
+#: templates/base/home.html:185
+#, fuzzy
+#| msgid "Browse Events"
+msgid "Featured Events"
+msgstr "تصفح الفعاليات"
+
+#: templates/base/home.html:186
+#, fuzzy
+#| msgid "Don't miss out on these exciting events happening soon"
+msgid "Don't miss out on these exciting events"
+msgstr "لا تفوت هذه الفعاليات المثيرة القادمة قريباً"
+
+#: templates/base/home.html:188 templates/home.html:178
+#: users/templates/users/profile.html:108
+#: users/templates/users/profile.html:110
+msgid "View All"
+msgstr "عرض الكل"
+
+#: templates/base/home.html:238
+#, fuzzy
+#| msgid "Discover Events"
+msgid "No Featured Events"
+msgstr "اكتشف الفعاليات"
+
+#: templates/base/home.html:239
+msgid ""
+"We don't have any featured events at the moment. Please check back later."
+msgstr ""
+
+#: templates/base/home.html:240
+#, fuzzy
+#| msgid "Browse Events"
+msgid "Browse All Events"
+msgstr "تصفح الفعاليات"
+
+#: templates/base/home.html:253
+msgid "Get Our Mobile App"
+msgstr ""
+
+#: templates/base/home.html:255
+msgid ""
+"Download our mobile app to book events on the go, receive notifications, and "
+"manage your bookings from anywhere."
+msgstr ""
+
+#: templates/base/home.html:269
+msgid "Mobile App"
+msgstr ""
+
+#: templates/home.html:32 templates/home.html:34 templates/home.html:484
+#: templates/home.html:486 users/templates/users/login.html:74
+msgid "Sign Up"
+msgstr "إنشاء حساب"
+
+#: templates/home.html:120
+msgid "Our Categories"
+msgstr "فئاتنا"
+
+#: templates/home.html:130
+msgid "Concerts"
+msgstr "حفلات موسيقية"
+
+#: templates/home.html:142
+msgid "Workshops"
+msgstr "ورش عمل"
+
+#: templates/home.html:177 users/templates/users/profile.html:85
+msgid "Upcoming Events"
+msgstr "الفعاليات القادمة"
+
+#: templates/home.html:180
+msgid "Don't miss out on these exciting events happening soon"
+msgstr "لا تفوت هذه الفعاليات المثيرة القادمة قريباً"
+
+#: templates/home.html:186
 msgid "Tech Conference"
 msgstr "مؤتمر التكنولوجيا"
 
+#: templates/home.html:194 templates/home.html:196
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:30
+msgid "June"
+msgstr "يونيو"
+
+#: templates/home.html:201 templates/home.html:203 templates/home.html:254
+#: templates/home.html:256 templates/home.html:307 templates/home.html:309
+msgid "going"
+msgstr "متوجه"
+
+#: templates/home.html:210
+msgid "Annual Tech Innovation Conference"
+msgstr "المؤتمر السنوي للابتكار التقني"
+
+#: templates/home.html:211
+msgid ""
+"Join industry leaders and innovators for a full day of inspiring talks about "
+"the latest technology trends."
+msgstr ""
+"انضم إلى قادة الصناعة والمبتكرين ليوم كامل من المحادثات الملهمة حول أحدث "
+"اتجاهات التكنولوجيا."
+
+#: templates/home.html:214 templates/home.html:218
+msgid "San Francisco Convention Center"
+msgstr "مركز مؤتمرات سان فرانسيسكو"
+
+#: templates/home.html:239
+#, fuzzy
+#| msgid "Summer Sounds Music Festival"
+msgid "Music Festival"
+msgstr "مهرجان أصوات الصيف الموسيقي"
+
+#: templates/home.html:247 templates/home.html:249
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:31
+msgid "July"
+msgstr "يوليو"
+
+#: templates/home.html:263
+msgid "Summer Sounds Music Festival"
+msgstr "مهرجان أصوات الصيف الموسيقي"
+
+#: templates/home.html:264
+msgid ""
+"Three days of incredible live performances from top artists across multiple "
+"stages in a beautiful outdoor setting."
+msgstr ""
+"ثلاثة أيام من العروض الحية المذهلة من كبار الفنانين على مسارح متعددة في "
+"أجواء خارجية جميلة."
+
+#: templates/home.html:267 templates/home.html:271
+msgid "Golden Gate Park"
+msgstr "حديقة جولدن جيت"
+
+#: templates/home.html:292 templates/home.html:316
+msgid "Startup Networking Event"
+msgstr "فعالية التواصل للشركات الناشئة"
+
+#: templates/home.html:294
 msgid "Business"
 msgstr "الأعمال"
 
-msgid "Edit Profile"
-msgstr "تعديل الملف الشخصي"
+#: templates/home.html:300 templates/home.html:302
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:32
+msgid "August"
+msgstr "أغسطس"
 
-msgid "Back to Profile"
-msgstr "العودة إلى الملف الشخصي"
+#: templates/home.html:317
+msgid ""
+"Connect with investors, founders, and industry experts in this exclusive "
+"networking event for the startup community."
+msgstr ""
+"تواصل مع المستثمرين والمؤسسين وخبراء الصناعة في هذه الفعالية الحصرية للتواصل "
+"لمجتمع الشركات الناشئة."
 
-msgid "Edit Your Profile"
-msgstr "تعديل ملفك الشخصي"
+#: templates/home.html:320 templates/home.html:324
+msgid "Innovation Hub"
+msgstr "مركز الابتكار"
 
-msgid "Personal Information"
-msgstr "المعلومات الشخصية"
+#: templates/home.html:345
+msgid "What Our Users Say"
+msgstr "ماذا يقول مستخدمونا"
 
-msgid "First Name"
-msgstr "الاسم الأول"
+#: templates/home.html:346
+msgid "Discover why people love our platform"
+msgstr "اكتشف لماذا يحب الناس منصتنا"
 
-msgid "Last Name"
-msgstr "اسم العائلة"
+#: templates/home.html:358 templates/home.html:379 templates/home.html:400
+msgid "\\"
+msgstr ""
 
-msgid "Username cannot be changed"
-msgstr "لا يمكن تغيير اسم المستخدم"
+#: templates/home.html:362
+msgid "John Doe"
+msgstr "محمد أحمد"
 
-msgid "Phone Number"
-msgstr "رقم الهاتف"
+#: templates/home.html:363
+msgid "Event Enthusiast"
+msgstr "مهتم بالفعاليات"
 
-msgid "Role"
-msgstr "الدور"
+#: templates/home.html:383
+msgid "Jane Smith"
+msgstr "سارة خالد"
 
-msgid "Address"
-msgstr "العنوان"
+#: templates/home.html:384
+msgid "Event Organizer"
+msgstr "منظم فعاليات"
 
+#: templates/home.html:404
+msgid "Robert Johnson"
+msgstr "أحمد محمود"
+
+#: templates/home.html:405
+msgid "Regular Attendee"
+msgstr "حاضر منتظم"
+
+#: templates/home.html:418
+msgid "Why Choose Us"
+msgstr "لماذا تختارنا"
+
+#: templates/home.html:419
+msgid "Booking Events Has Never Been"
+msgstr "حجز الفعاليات لم يكن أبداً"
+
+#: templates/home.html:419
+msgid "This Easy"
+msgstr "بهذه السهولة"
+
+#: templates/home.html:429
+msgid ""
+"Easily find events that match your interests with our powerful search and "
+"filtering tools."
+msgstr ""
+"اعثر بسهولة على الفعاليات التي تناسب اهتماماتك من خلال أدوات البحث والتصفية "
+"القوية لدينا."
+
+#: templates/home.html:440
+msgid "Instant Booking"
+msgstr "حجز فوري"
+
+#: templates/home.html:441
+msgid "Book tickets in seconds without any complicated checkout process."
+msgstr "احجز التذاكر في ثوانٍ دون أي عملية دفع معقدة."
+
+#: templates/home.html:452
+msgid "Event Reminders"
+msgstr "تذكيرات الفعاليات"
+
+#: templates/home.html:453
+msgid "Get notified about your upcoming events so you never miss out."
+msgstr "احصل على إشعارات حول الفعاليات القادمة حتى لا تفوتك أبداً."
+
+#: templates/home.html:460
+msgid "App Features"
+msgstr "ميزات التطبيق"
+
+#: templates/home.html:471
+msgid "Ready to Experience Amazing Events?"
+msgstr "هل أنت مستعد لتجربة فعاليات مذهلة؟"
+
+#: templates/home.html:494
+msgid "Event"
+msgstr "فعالية"
+
+#: templates/home.html:506
+msgid ""
+"Subscribe to our newsletter to get the latest updates on events and special "
+"offers."
+msgstr ""
+"اشترك في نشرتنا الإخبارية للحصول على آخر التحديثات حول الفعاليات والعروض "
+"الخاصة."
+
+#: templates/home.html:509
+msgid "Your email address"
+msgstr "عنوان بريدك الإلكتروني"
+
+#: templates/home.html:509
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1909
+msgid "Email address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: users/templates/users/login.html:10
+msgid "Welcome Back"
+msgstr "مرحباً بعودتك"
+
+#: users/templates/users/login.html:17 users/templates/users/login.html:68
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#: users/templates/users/login.html:18
+msgid "Sign in to access your account"
+msgstr ""
+
+#: users/templates/users/login.html:34
+#: users/templates/users/profile_edit.html:60
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: users/templates/users/login.html:39
+msgid "Enter your username"
+msgstr ""
+
+#: users/templates/users/login.html:40
+msgid "Please enter your username."
+msgstr ""
+
+#: users/templates/users/login.html:46
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: users/templates/users/login.html:47
+msgid "Forgot Password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: users/templates/users/login.html:53
+msgid "Enter your password"
+msgstr ""
+
+#: users/templates/users/login.html:57
+msgid "Please enter your password."
+msgstr ""
+
+#: users/templates/users/login.html:63
+msgid "Remember me"
+msgstr "تذكرني"
+
+#: users/templates/users/login.html:74
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب؟"
+
+#: users/templates/users/login.html:80
+msgid "Protected by industry-leading security"
+msgstr ""
+
+#: users/templates/users/password_change.html:10
+#: users/templates/users/profile_edit.html:87
+#: users/templates/users/profile_edit.html:89
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
 
-msgid "Save Changes"
-msgstr "حفظ التغييرات"
+#: users/templates/users/password_change.html:13
+#: users/templates/users/password_change.html:15
+#: users/templates/users/profile_edit.html:13
+#: users/templates/users/profile_edit.html:15
+msgid "Back to Profile"
+msgstr "العودة إلى الملف الشخصي"
 
-msgid "Current Password"
-msgstr "كلمة المرور الحالية"
-
-msgid "New Password"
-msgstr "كلمة المرور الجديدة"
-
-msgid "Confirm New Password"
-msgstr "تأكيد كلمة المرور الجديدة"
-
-msgid "Update Password"
-msgstr "تحديث كلمة المرور"
-
+#: users/templates/users/password_change.html:35
 msgid "Security Settings"
 msgstr "إعدادات الأمان"
 
-msgid "Security Tip"
-msgstr "نصيحة أمنية"
+#: users/templates/users/password_change.html:43
+msgid "Current Password"
+msgstr "كلمة المرور الحالية"
 
-msgid "Remember to use unique passwords for each website and update them regularly for better security."
-msgstr "تذكر استخدام كلمات مرور فريدة لكل موقع وتحديثها بانتظام لتعزيز الأمان."
+#: users/templates/users/password_change.html:48
+msgid "New Password"
+msgstr "كلمة المرور الجديدة"
 
+#: users/templates/users/password_change.html:51
 msgid "Use at least 8 characters with a mix of letters, numbers & symbols"
 msgstr "استخدم 8 أحرف على الأقل مع مزيج من الأحرف والأرقام والرموز"
 
-msgid "Total Bookings"
-msgstr "إجمالي الحجوزات"
+#: users/templates/users/password_change.html:56
+msgid "Confirm New Password"
+msgstr "تأكيد كلمة المرور الجديدة"
 
-msgid "Events you've booked since joining"
-msgstr "الفعاليات التي حجزتها منذ الانضمام"
+#: users/templates/users/password_change.html:63
+#: users/templates/users/password_change.html:65
+msgid "Update Password"
+msgstr "تحديث كلمة المرور"
 
-msgid "Events you're attending soon"
-msgstr "الفعاليات التي ستحضرها قريبًا"
+#: users/templates/users/password_change.html:78
+msgid "Security Tip"
+msgstr "نصيحة أمنية"
 
-msgid "Different event types you've attended"
-msgstr "أنواع الفعاليات المختلفة التي حضرتها"
+#: users/templates/users/password_change.html:80
+msgid ""
+"Remember to use unique passwords for each website and update them regularly "
+"for better security."
+msgstr "تذكر استخدام كلمات مرور فريدة لكل موقع وتحديثها بانتظام لتعزيز الأمان."
 
-msgid "Your Recent Bookings"
-msgstr "حجوزاتك الأخيرة"
-
-msgid "No bookings yet"
-msgstr "لا توجد حجوزات بعد"
-
-msgid "You haven't booked any events yet."
-msgstr "لم تقم بحجز أي فعاليات بعد."
-
+#: users/templates/users/profile.html:54
 msgid "Member since"
 msgstr "عضو منذ"
 
+#: users/templates/users/profile.html:61 users/templates/users/profile.html:63
+msgid "Edit Profile"
+msgstr "تعديل الملف الشخصي"
+
+#: users/templates/users/profile.html:76
+msgid "Total Bookings"
+msgstr "إجمالي الحجوزات"
+
+#: users/templates/users/profile.html:77
+msgid "Events you've booked since joining"
+msgstr "الفعاليات التي حجزتها منذ الانضمام"
+
+#: users/templates/users/profile.html:86
+msgid "Events you're attending soon"
+msgstr "الفعاليات التي ستحضرها قريبًا"
+
+#: users/templates/users/profile.html:95
+msgid "Different event types you've attended"
+msgstr "أنواع الفعاليات المختلفة التي حضرتها"
+
+#: users/templates/users/profile.html:105
+msgid "Your Recent Bookings"
+msgstr "حجوزاتك الأخيرة"
+
+#: users/templates/users/profile.html:140
+msgid "No bookings yet"
+msgstr "لا توجد حجوزات بعد"
+
+#: users/templates/users/profile.html:141
+msgid "You haven't booked any events yet."
+msgstr "لم تقم بحجز أي فعاليات بعد."
+
+#: users/templates/users/profile_edit.html:10
+msgid "Edit Your Profile"
+msgstr "تعديل ملفك الشخصي"
+
+#: users/templates/users/profile_edit.html:33
+msgid "Personal Information"
+msgstr "المعلومات الشخصية"
+
+#: users/templates/users/profile_edit.html:42
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: users/templates/users/profile_edit.html:48
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#: users/templates/users/profile_edit.html:54
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: users/templates/users/profile_edit.html:62
+msgid "Username cannot be changed"
+msgstr "لا يمكن تغيير اسم المستخدم"
+
+#: users/templates/users/profile_edit.html:67
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: users/templates/users/profile_edit.html:73
+msgid "Role"
+msgstr "الدور"
+
+#: users/templates/users/profile_edit.html:79
+msgid "Address"
+msgstr "العنوان"
+
+#: users/templates/users/profile_edit.html:94
+#: users/templates/users/profile_edit.html:96
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+#: venv/lib/python3.12/site-packages/click/_termui_impl.py:600
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/_termui_impl.py:604
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1084
+#: venv/lib/python3.12/site-packages/click/core.py:1121
+#, python-brace-format
+msgid "{text} {deprecated_message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1140
+msgid "Options"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1202
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1221
+msgid "DeprecationWarning: The command {name!r} is deprecated.{extra_message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1405
+msgid "Aborted!"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1779
+msgid "Commands"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1810
+msgid "Missing command."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:1888
+msgid "No such command {name!r}."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2303
+msgid "Value must be an iterable."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2324
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2404
+msgid ""
+"DeprecationWarning: The {param_type} {name!r} is deprecated.{extra_message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2806
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2809
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/core.py:2869
+msgid "(dynamic)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/decorators.py:522
+msgid "Show the version and exit."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/decorators.py:548
+msgid "Show this message and exit."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:50
+#: venv/lib/python3.12/site-packages/click/exceptions.py:89
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:81
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:130
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:132
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:190
+msgid "Missing argument"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:192
+msgid "Missing option"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:194
+msgid "Missing parameter"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:196
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:203
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:223
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:235
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:282
+msgid "unknown error"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/exceptions.py:289
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/parser.py:200
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/parser.py:383
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/parser.py:444
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:162
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:178
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:180
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:191
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:247
+msgid "Error: invalid input"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/termui.py:866
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:332
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:369
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:460
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:482
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:538
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:679
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:703
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:893
+#, fuzzy
+#| msgid "Profile"
+msgid "file"
+msgstr "الملف الشخصي"
+
+#: venv/lib/python3.12/site-packages/click/types.py:895
+msgid "directory"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:897
+msgid "path"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:944
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:953
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:961
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:970
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:979
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:988
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/click/types.py:1055
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/contrib/syndication/apps.py:7
+#, fuzzy
+#| msgid "Location"
+msgid "Syndication"
+msgstr "الموقع"
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: venv/lib/python3.12/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:104
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:760
+msgid "Enter a valid URL."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:165
+msgid "Enter a valid integer."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:176
+#, fuzzy
+#| msgid "Your email address"
+msgid "Enter a valid email address."
+msgstr "عنوان بريدك الإلكتروني"
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: venv/lib/python3.12/site-packages/django/core/validators.py:259
+msgid ""
+"Enter a valid "slug" consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:267
+msgid ""
+"Enter a valid "slug" consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:279
+#: venv/lib/python3.12/site-packages/django/core/validators.py:306
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:286
+#: venv/lib/python3.12/site-packages/django/core/validators.py:307
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:298
+#: venv/lib/python3.12/site-packages/django/core/validators.py:305
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:341
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:347
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:382
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:391
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:400
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:407
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:439
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:457
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:480
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:355
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:394
+#, fuzzy
+#| msgid "Entertainment"
+msgid "Enter a number."
+msgstr "ترفيه"
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:482
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:487
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:492
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:563
+#, python-format
+msgid ""
+"File extension "%(extension)s" is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/core/validators.py:624
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/base.py:1473
+#: venv/lib/python3.12/site-packages/django/forms/models.py:906
+msgid "and"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/base.py:1475
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/constraints.py:20
+#, python-format
+msgid "Constraint "%(name)s" is violated."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:133
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:134
+msgid "This field cannot be null."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:135
+msgid "This field cannot be blank."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:136
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:140
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:179
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1155
+#, python-format
+msgid ""
+"%(value)s" value must be either True or False."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1156
+#, python-format
+msgid ""
+"%(value)s" value must be either True, False, or None."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1158
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1208
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1210
+msgid "String (unlimited)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1314
+msgid "Comma-separated integers"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1415
+#, python-format
+msgid ""
+"%(value)s" value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1419
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1554
+#, python-format
+msgid ""
+"%(value)s" value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1423
+msgid "Date (without time)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1550
+#, python-format
+msgid ""
+"%(value)s" value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1558
+#, python-format
+msgid ""
+"%(value)s" value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1563
+msgid "Date (with time)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1690
+#, python-format
+msgid ""
+"%(value)s" value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1692
+#, fuzzy
+#| msgid "December"
+msgid "Decimal number"
+msgstr "ديسمبر"
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1853
+#, python-format
+msgid ""
+"%(value)s" value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1857
+#, fuzzy
+#| msgid "Location"
+msgid "Duration"
+msgstr "الموقع"
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1934
+msgid "File path"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2012
+#, python-format
+msgid ""
+"%(value)s" value must be a float."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2014
+msgid "Floating point number"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2054
+#, python-format
+msgid ""
+"%(value)s" value must be an integer."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2056
+msgid "Integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2152
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2169
+msgid "Small integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2177
+#, fuzzy
+#| msgid "Email address"
+msgid "IPv4 address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2208
+#, fuzzy
+#| msgid "Address"
+msgid "IP address"
+msgstr "العنوان"
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2301
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2302
+#, python-format
+msgid "“%(value)s" value must be either None, True or False."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2304
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2355
+msgid "Positive big integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2370
+msgid "Positive integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2385
+msgid "Positive small integer"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2401
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2437
+msgid "Text"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2512
+#, python-format
+msgid ""
+"%(value)s" value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2516
+#, python-format
+msgid ""
+"%(value)s" value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2628
+msgid "URL"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2652
+msgid "Raw binary data"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2717
+#, python-format
+msgid "“%(value)s" is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2719
+msgid "Universally unique identifier"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:232
+msgid "File"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:393
+msgid "Image"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:26
+msgid "A JSON object"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:28
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:939
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:941
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1235
+msgid "One-to-one relationship"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1292
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1294
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1342
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: venv/lib/python3.12/site-packages/django/forms/boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:304
+msgid "Enter a whole number."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:475
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1252
+msgid "Enter a valid date."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:498
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1253
+msgid "Enter a valid time."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:525
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:559
+msgid "Enter a valid duration."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:560
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:629
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:630
+msgid "No file was submitted."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:631
+msgid "The submitted file is empty."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:633
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:638
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:702
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:874
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:960
+#: venv/lib/python3.12/site-packages/django/forms/models.py:1585
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:962
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1081
+#: venv/lib/python3.12/site-packages/django/forms/models.py:1583
+msgid "Enter a list of values."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1082
+msgid "Enter a complete value."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1321
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/fields.py:1351
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: venv/lib/python3.12/site-packages/django/forms/forms.py:94
+msgid ":"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/forms.py:231
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:484
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:899
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:904
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:911
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:920
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:1357
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:1448
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/models.py:1587
+#, python-format
+msgid "“%(pk)s" is not a valid value."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/utils.py:227
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:462
+msgid "Currently"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:463
+#, fuzzy
+#| msgid "Save Changes"
+msgid "Change"
+msgstr "حفظ التغييرات"
+
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:800
+msgid "Unknown"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:801
+msgid "Yes"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/forms/widgets.py:802
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:876
+msgid "yes,no,maybe"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:906
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:923
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:925
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:927
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:929
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:931
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:933
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:25
+msgid "January"
+msgstr "يناير"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:26
+msgid "February"
+msgstr "فبراير"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:27
+msgid "March"
+msgstr "مارس"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:28
+msgid "April"
+msgstr "أبريل"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:29
+msgid "May"
+msgstr "مايو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:33
+msgid "September"
+msgstr "سبتمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:34
+msgid "October"
+msgstr "أكتوبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:35
+msgid "November"
+msgstr "نوفمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:36
+msgid "December"
+msgstr "ديسمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:39
+msgid "jan"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:40
+msgid "feb"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:41
+msgid "mar"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:42
+msgid "apr"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:43
+#, fuzzy
+#| msgid "May"
+msgid "may"
+msgstr "مايو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:44
+msgid "jun"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:45
+msgid "jul"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:46
+msgid "aug"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:47
+msgid "sep"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:48
+#, fuzzy
+#| msgid "Contact"
+msgid "oct"
+msgstr "اتصل بنا"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:49
+msgid "nov"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:50
+msgid "dec"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:55
+#, fuzzy
+#| msgid "March"
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "مارس"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:56
+#, fuzzy
+#| msgid "April"
+msgctxt "abbrev. month"
+msgid "April"
+msgstr "أبريل"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:57
+#, fuzzy
+#| msgid "May"
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "مايو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:58
+#, fuzzy
+#| msgid "June"
+msgctxt "abbrev. month"
+msgid "June"
+msgstr "يونيو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:59
+#, fuzzy
+#| msgid "July"
+msgctxt "abbrev. month"
+msgid "July"
+msgstr "يوليو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:67
+#, fuzzy
+#| msgid "January"
+msgctxt "alt. month"
+msgid "January"
+msgstr "يناير"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:68
+#, fuzzy
+#| msgid "February"
+msgctxt "alt. month"
+msgid "February"
+msgstr "فبراير"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:69
+#, fuzzy
+#| msgid "March"
+msgctxt "alt. month"
+msgid "March"
+msgstr "مارس"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:70
+#, fuzzy
+#| msgid "April"
+msgctxt "alt. month"
+msgid "April"
+msgstr "أبريل"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:71
+#, fuzzy
+#| msgid "May"
+msgctxt "alt. month"
+msgid "May"
+msgstr "مايو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:72
+#, fuzzy
+#| msgid "June"
+msgctxt "alt. month"
+msgid "June"
+msgstr "يونيو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:73
+#, fuzzy
+#| msgid "July"
+msgctxt "alt. month"
+msgid "July"
+msgstr "يوليو"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:74
+#, fuzzy
+#| msgid "August"
+msgctxt "alt. month"
+msgid "August"
+msgstr "أغسطس"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:75
+#, fuzzy
+#| msgid "September"
+msgctxt "alt. month"
+msgid "September"
+msgstr "سبتمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:76
+#, fuzzy
+#| msgid "October"
+msgctxt "alt. month"
+msgid "October"
+msgstr "أكتوبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:77
+#, fuzzy
+#| msgid "November"
+msgctxt "alt. month"
+msgid "November"
+msgstr "نوفمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:78
+#, fuzzy
+#| msgid "December"
+msgctxt "alt. month"
+msgid "December"
+msgstr "ديسمبر"
+
+#: venv/lib/python3.12/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/text.py:70
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/text.py:270
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: venv/lib/python3.12/site-packages/django/utils/text.py:289
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:135
+msgid ", "
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a "Referer "
+"header" to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:40
+msgid ""
+"If you have configured your browser to disable "Referer" headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for "same-"
+"origin" requests."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the "Referrer-Policy: no-referrer" header, please remove them. The "
+"CSRF protection requires the "Referer" header to do strict referer checking. "
+"If you're concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for "same-origin" requests."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:64
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:115
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:349
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:380
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:652
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:692
+#, python-format
+msgid "Invalid date string "%(datestr)s" given format "%(format)s""
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/detail.py:56
+#, fuzzy, python-format
+#| msgid "No events found matching your criteria."
+msgid "No %(verbose_name)s found matching the query"
+msgstr "لم يتم العثور على فعاليات مطابقة لمعاييرك"
+
+#: venv/lib/python3.12/site-packages/django/views/generic/list.py:70
+msgid "Page is not "last", nor can it be converted to an int."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/generic/list.py:169
+#, python-format
+msgid "Empty list and "%(class_name)s.allow_empty" is False."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/static.py:51
+#, python-format
+msgid ""
+"%(path)s" does not exist"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/static.py:68
+#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:8
+#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:7
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:220
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:221
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:229
+msgid "Django Documentation"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:230
+msgid "Topics, references, &amp; how-to's"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:238
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:239
+msgid "Get started with Django"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:247
+msgid "Django Community"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:248
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv/lib/python3.12/site-packages/modeltranslation/widgets.py:32
+msgid "None"
+msgstr ""
+
+#~ msgid "Event Booking"
+#~ msgstr "حجز الفعاليات"
+
+#~ msgid "Browse by Category"
+#~ msgstr "تصفح حسب الفئة"
+
+#~ msgid "Food & Drinks"
+#~ msgstr "طعام ومشروبات"
+
+#~ msgid ""
+#~ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui "
+#~ "mauris."
+#~ msgstr "يمكنك الآن حجز الفعاليات بسهولة من خلال منصتنا."
+
+#~ msgid "Event Location"
+#~ msgstr "موقع الفعالية"
+
+#~ msgid ""
+#~ "\"This platform made finding local events so easy! I've discovered "
+#~ "amazing concerts I would have missed otherwise.\""
+#~ msgstr ""
+#~ "هذه المنصة جعلت العثور على الفعاليات المحلية سهلاً جداً! لقد اكتشفت حفلات "
+#~ "موسيقية رائعة كنت سأفوتها لولا ذلك."
+
+#~ msgid ""
+#~ "\"As an event organizer, this platform has helped me reach new audiences "
+#~ "and manage bookings effortlessly.\""
+#~ msgstr ""
+#~ "كمنظم فعاليات، ساعدتني هذه المنصة في الوصول إلى جماهير جديدة وإدارة "
+#~ "الحجوزات بسهولة."
+
+#~ msgid ""
+#~ "\"The booking process is seamless, and I love that I can see all my "
+#~ "upcoming events in one place.\""
+#~ msgstr ""
+#~ "عملية الحجز سلسة، وأحب أنني أستطيع رؤية جميع الفعاليات القادمة في مكان "
+#~ "واحد."
+
+#~ msgid "Booking"
+#~ msgstr "حجز"

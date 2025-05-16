@@ -36,14 +36,14 @@
             <div class="col-md-8">
                 <h2 class="mb-0">{{ user.get_full_name|default:user.username }}</h2>
                 <p class="text-muted mb-1">
-                    <i class="bi bi-envelope"></i> {{ user.email }}
+                    <i class="bi bi-envelope {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i> {{ user.email }}
                     {% if user.phone_number %}
-                    <span class="ms-3"><i class="bi bi-telephone"></i> {{ user.phone_number }}</span>
+                    <span class="{% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}"><i class="bi bi-telephone {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i> {{ user.phone_number }}</span>
                     {% endif %}
                 </p>
                 {% if user.address %}
                 <p class="text-muted mb-2">
-                    <i class="bi bi-geo-alt"></i> {{ user.address }}
+                    <i class="bi bi-geo-alt {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i> {{ user.address }}
                 </p>
                 {% endif %}
                 <p class="mb-0">
@@ -119,9 +119,9 @@
                         <div>
                             <h5 class="mb-1">{{ booking.event.name }}</h5>
                             <p class="mb-1 text-muted">
-                                <i class="bi bi-calendar me-1"></i> {{ booking.event.date|date:"F j, Y" }}
+                                <i class="bi bi-calendar {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i> {{ booking.event.date|date:"F j, Y" }}
                                 <span class="mx-2">|</span>
-                                <i class="bi bi-geo-alt me-1"></i> {{ booking.event.venue }}
+                                <i class="bi bi-geo-alt {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i> {{ booking.event.venue }}
                             </p>
                         </div>
                         <div class="text-end">
@@ -135,7 +135,7 @@
                 {% empty %}
                 <div class="list-group-item text-center py-5">
                     <div class="mb-3 text-muted">
-                        <i class="bi bi-calendar-x fs-1"></i>
+                        <i class="bi bi-calendar-x fs-1 {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i>
                     </div>
                     <h5>{% trans "No bookings yet" %}</h5>
                     <p class="mb-3">{% trans "You haven't booked any events yet." %}</p>

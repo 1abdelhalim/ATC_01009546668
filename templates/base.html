@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% trans "Evently - Discover Amazing Events" %}{% endblock %}</title>
     {% load static %}
     {% load i18n %}
+    <title>{% block title %}{% trans "Evently - Discover Amazing Events" %}{% endblock %}</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,6 +75,14 @@
                     {% endif %}
                 </ul>
                 <div class="d-flex align-items-center">
+                    <!-- Notification Icon -->
+                    <a class="nav-link position-relative me-2 ms-2" href="#" title="{% trans 'Notifications' %}" aria-label="{% trans 'Notifications' %}">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.7rem;">
+                            3
+                            <span class="visually-hidden">{% trans 'unread notifications' %}</span>
+                        </span>
+                    </a>
                     <!-- Language Selector -->
                     <div class="dropdown me-2">
                         <button class="btn btn-sm btn-outline-secondary language-switcher dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -201,8 +209,8 @@
                     <p class="mb-3 text-muted">{% trans "Discover and book amazing events in your area. Never miss out on what matters most to you." %}</p>
                     <div class="d-flex gap-3 social-icons">
                         <a href="#" class="text-decoration-none"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-decoration-none"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="text-decoration-none"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-youtube"></i></a>
                         <a href="#" class="text-decoration-none"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>

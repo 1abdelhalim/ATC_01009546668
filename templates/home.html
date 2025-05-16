@@ -12,7 +12,7 @@
                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">{% trans "Find Your Next Experience" %}</span>
                 <h1 class="fw-bold display-4 mb-3 hero-heading">
                     {% if LANGUAGE_CODE == 'ar' %}
-                        {% trans "Near You" %} <span class="gradient-text">{% trans "Amazing Events" %}</span> {% trans "Discover" %}
+                        استكشف <span class="gradient-text">فعاليات رائعة</span> بالقرب منك
                     {% else %}
                         {% trans "Discover" %} <span class="gradient-text">{% trans "Amazing Events" %}</span> {% trans "Near You" %}
                     {% endif %}
@@ -21,7 +21,7 @@
                 <div class="d-flex gap-3 flex-wrap">
                     <a href="{% url 'events:list' %}" class="btn btn-primary btn-lg px-4 shadow-sm">
                         {% if LANGUAGE_CODE == 'ar' %}
-                            {% trans "Browse Events" %}<i class="bi bi-search me-2"></i>
+                            {% trans "Browse Events" %}<i class="bi bi-search ms-2"></i>
                         {% else %}
                             <i class="bi bi-search me-2"></i>{% trans "Browse Events" %}
                         {% endif %}
@@ -29,7 +29,7 @@
                     {% if not user.is_authenticated %}
                     <a href="{% url 'users:register' %}" class="btn btn-outline-primary btn-lg px-4">
                         {% if LANGUAGE_CODE == 'ar' %}
-                            {% trans "Sign Up" %}<i class="bi bi-person-plus me-2"></i>
+                            {% trans "Sign Up" %}<i class="bi bi-person-plus ms-2"></i>
                         {% else %}
                             <i class="bi bi-person-plus me-2"></i>{% trans "Sign Up" %}
                         {% endif %}
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title h5 fw-bold">{% trans "Annual Tech Innovation Conference" %}</h3>
+                    <h3 class="card-title h5 fw-bold">{% trans "Annual Tech Conference" %}</h3>
                     <p class="card-text text-muted">{% trans "Join industry leaders and innovators for a full day of inspiring talks about the latest technology trends." %}</p>
                     <div class="d-flex align-items-center mb-3">
                         {% if LANGUAGE_CODE == 'ar' %}
@@ -219,7 +219,7 @@
                         {% endif %}
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold text-primary">$199.00</span>
+                        <span class="fw-bold text-primary {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">$199.00</span>
                         <a href="{% url 'events:detail' slug='web-development-conference' %}" class="btn btn-primary">
                             {% if LANGUAGE_CODE == 'ar' %}
                                 {% trans "Book Now" %}
@@ -272,7 +272,7 @@
                         {% endif %}
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold text-primary">$149.50</span>
+                        <span class="fw-bold text-primary {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">$149.50</span>
                         <a href="{% url 'events:detail' slug='summer-music-festival' %}" class="btn btn-primary">
                             {% if LANGUAGE_CODE == 'ar' %}
                                 {% trans "Book Now" %}
@@ -325,7 +325,7 @@
                         {% endif %}
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold text-primary">$45.00</span>
+                        <span class="fw-bold text-primary {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">$45.00</span>
                         <a href="{% url 'events:detail' slug='startup-networking-event' %}" class="btn btn-primary">
                             {% if LANGUAGE_CODE == 'ar' %}
                                 {% trans "Book Now" %}
@@ -342,6 +342,75 @@
 
 <!-- Testimonials -->
 <div class="container mb-5" data-aos="fade-up">
+    {% if LANGUAGE_CODE == 'ar' %}
+    <h2 class="fw-bold text-center mb-1">ماذا يقول مستخدمونا</h2>
+    <p class="text-center text-muted mb-5">اكتشف لماذا يحب الناس منصتنا</p>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text mb-4">"منصة رائعة سهلت عليّ العثور على فعاليات قريبة مني. حضرت حفلات مذهلة لم أكن لأعرف عنها لولاها، وأصبحت أتابع كل جديد بسهولة."</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center ms-3" style="width: 50px; height: 50px; font-size: 1.2rem;">JD</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">محمد أحمد</h6>
+                            <small class="text-muted">مهتم بالفعاليات</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text mb-4">"جربت حضور فعاليات متنوعة عبر المنصة وكانت جميعها ممتعة وسهلة الحجز. أنصح الجميع بتجربتها، فهي توفر خيارات كثيرة وتحديثات مستمرة."</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center ms-3" style="width: 50px; height: 50px; font-size: 1.2rem;">JS</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">سارة خالد</h6>
+                            <small class="text-muted">مشارك في الفعاليات</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <p class="card-text mb-4">"عملية الحجز كانت سلسة جداً، وأحببت أنني أستطيع متابعة جميع فعالياتي القادمة في مكان واحد. أشعر بالراحة والثقة مع هذه المنصة."</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center ms-3" style="width: 50px; height: 50px; font-size: 1.2rem;">RJ</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">أحمد محمود</h6>
+                            <small class="text-muted">حاضر منتظم</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
     <h2 class="fw-bold text-center mb-1">{% trans "What Our Users Say" %}</h2>
     <p class="text-center text-muted mb-5">{% trans "Discover why people love our platform" %}</p>
     <div class="row">
@@ -357,7 +426,7 @@
                     </div>
                     <p class="card-text mb-4">{% trans "\"This platform made finding local events so easy! I've discovered amazing concerts I would have missed otherwise.\"" %}</p>
                     <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">JD</div>
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">JD</div>
                         <div>
                             <h6 class="mb-0 fw-bold">{% trans "John Doe" %}</h6>
                             <small class="text-muted">{% trans "Event Enthusiast" %}</small>
@@ -378,7 +447,7 @@
                     </div>
                     <p class="card-text mb-4">{% trans "\"As an event organizer, this platform has helped me reach new audiences and manage bookings effortlessly.\"" %}</p>
                     <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">JS</div>
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">JS</div>
                         <div>
                             <h6 class="mb-0 fw-bold">{% trans "Jane Smith" %}</h6>
                             <small class="text-muted">{% trans "Event Organizer" %}</small>
@@ -399,7 +468,7 @@
                     </div>
                     <p class="card-text mb-4">{% trans "\"The booking process is seamless, and I love that I can see all my upcoming events in one place.\"" %}</p>
                     <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}" style="width: 50px; height: 50px; font-size: 1.2rem;">RJ</div>
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">RJ</div>
                         <div>
                             <h6 class="mb-0 fw-bold">{% trans "Robert Johnson" %}</h6>
                             <small class="text-muted">{% trans "Regular Attendee" %}</small>
@@ -409,6 +478,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 </div>
 
 <!-- App Feature Section -->
@@ -416,11 +486,11 @@
     <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
             <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">{% trans "Why Choose Us" %}</span>
-            <h2 class="fw-bold mb-4">{% trans "Booking Events Has Never Been" %} <span class="gradient-text">{% trans "This Easy" %}</span></h2>
+            <h2 class="fw-bold mb-4 text-lg-end text-end" style="direction: rtl;">{% trans "Booking Events Has Never Been" %} <span class="gradient-text">{% trans "This Easy" %}</span></h2>
             
-            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %} mb-4">
-                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
-                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+            <div class="d-flex flex-row-reverse mb-4" style="direction: rtl;">
+                <div class="ms-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                         <i class="bi bi-search text-primary fs-4"></i>
                     </div>
                 </div>
@@ -430,9 +500,9 @@
                 </div>
             </div>
             
-            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %} mb-4">
-                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
-                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+            <div class="d-flex flex-row-reverse mb-4" style="direction: rtl;">
+                <div class="ms-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                         <i class="bi bi-calendar-check text-primary fs-4"></i>
                     </div>
                 </div>
@@ -442,9 +512,9 @@
                 </div>
             </div>
             
-            <div class="d-flex {% if LANGUAGE_CODE == 'ar' %}flex-row{% endif %}">
-                <div class="{% if LANGUAGE_CODE == 'ar' %}ms-4{% else %}me-4{% endif %}">
-                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex">
+            <div class="d-flex flex-row-reverse" style="direction: rtl;">
+                <div class="ms-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                         <i class="bi bi-bell text-primary fs-4"></i>
                     </div>
                 </div>
@@ -464,14 +534,14 @@
 </div>
 
 <!-- CTA Section -->
-<div class="bg-primary text-white py-5 mb-5" data-aos="fade-up">
+<div class="bg-gradient-purple text-white py-5 mb-5 rounded-5 shadow-lg" data-aos="fade-up">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <h2 class="fw-bold display-5 mb-3">{% trans "Ready to Experience Amazing Events?" %}</h2>
                 <p class="lead mb-4">{% trans "Discover and book amazing events in your area. Never miss out on what matters most to you." %}</p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{% url 'events:list' %}" class="btn btn-lg btn-light text-primary shadow-sm {% if LANGUAGE_CODE != 'ar' %}me-2{% else %}ms-2{% endif %}">
+                    <a href="{% url 'events:list' %}" class="btn btn-lg btn-light text-purple shadow-sm {% if LANGUAGE_CODE != 'ar' %}me-2{% else %}ms-2{% endif %}">
                         {% if LANGUAGE_CODE == 'ar' %}
                             {% trans "Browse Events" %}<i class="bi bi-search ms-2"></i>
                         {% else %}
@@ -490,7 +560,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="card border-0 rounded-4 shadow overflow-hidden">
+                <div class="card border-0 rounded-4 shadow-lg overflow-hidden">
                     <img src="{% static 'img/sections/events.jpg' %}" alt="{% trans 'Event' %}" class="img-fluid">
                 </div>
             </div>
@@ -534,6 +604,14 @@
         background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
     }
     
+    .bg-gradient-purple {
+        background: linear-gradient(135deg, #9370DB, #7B68EE);
+    }
+    
+    .text-purple {
+        color: #7B68EE !important;
+    }
+    
     .hover-lift {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -544,7 +622,7 @@
     }
     
     .bg-accent-color {
-        background-color: #4169E1;
+        background-color: #9370DB;
     }
     
     html[dir="rtl"] .gradient-text {

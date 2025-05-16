@@ -160,8 +160,16 @@
                         <div class="position-relative">
                             {% if event.image %}
                             <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% elif event.name == "Marathon Championships" %}
+                            <img src="/media/events/marathon-championships.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% elif event.name == "Web Development Conference" %}
+                            <img src="/media/events/ai-and-machine-learning-workshop.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% elif event.name == "Basketball Tournament" %}
+                            <img src="/media/events/basketball-tournament.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            {% elif event.name == "Summer Sounds Music Festival" %}
+                            <img src="/media/events/jazz-night.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
                             {% else %}
-                            <img src="https://source.unsplash.com/random/600x400?{{ event.category.name|lower }}&sig={{ forloop.counter }}" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
+                            <img src="https://robohash.org/{{ event.id }}?set=set2&size=600x400" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
                             {% endif %}
                             <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
                                 {% if event.category %}
@@ -216,15 +224,15 @@
                             {% endif %}
                             
                             <div class="mt-auto d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-primary">${{ event.price|floatformat:2 }}</span>
+                                <span class="fw-bold text-primary {% if LANGUAGE_CODE == 'ar' %}ms-3{% else %}me-3{% endif %}">${{ event.price|floatformat:2 }}</span>
                                 {% if event.is_booked_by_user %}
-                                    <span class="badge bg-success px-3 py-2">
+                                    <a href="#" class="btn btn-success px-3 shadow-sm hover-lift d-flex align-items-center justify-content-center" tabindex="-1" style="pointer-events: none; opacity: 0.85; min-width: 120px; height: 40px;">
                                         {% if LANGUAGE_CODE == 'ar' %}
                                             {% trans "Booked" %}<i class="bi bi-check-circle ms-1"></i>
                                         {% else %}
                                             <i class="bi bi-check-circle me-1"></i>{% trans "Booked" %}
                                         {% endif %}
-                                    </span>
+                                    </a>
                                 {% elif event.is_sold_out %}
                                     <span class="badge bg-danger px-3 py-2">
                                         {% if LANGUAGE_CODE == 'ar' %}
@@ -256,7 +264,7 @@
                 {% empty %}
                 <div class="col-12">
                     <div class="alert alert-info text-center">
-                        <i class="bi bi-info-circle me-2"></i>
+                        <i class="bi bi-info-circle {% if LANGUAGE_CODE == 'ar' %}ms-2{% else %}me-2{% endif %}"></i>
                         {% trans "No events found matching your criteria." %}
                     </div>
                 </div>

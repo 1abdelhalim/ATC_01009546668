@@ -44,7 +44,7 @@
                         <div class="mb-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <label for="password" class="form-label fw-semibold">{% trans "Password" %}</label>
-                                <a href="#" class="text-decoration-none small">{% trans "Forgot Password?" %}</a>
+                                <a href="{% url 'users:password_reset' %}" class="text-decoration-none small">{% trans "Forgot Password?" %}</a>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text bg-transparent border-end-0">

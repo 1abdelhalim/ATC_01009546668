@@ -34,11 +34,11 @@ html[dir="rtl"] .me-3 { margin-left: 1rem !important; margin-right: 0 !important
 html[dir="rtl"] .me-4 { margin-left: 1.5rem !important; margin-right: 0 !important; }
 html[dir="rtl"] .me-5 { margin-left: 3rem !important; margin-right: 0 !important; }
 
-html[dir="rtl"] .ms-1 { margin-right: 0.25rem !important; margin-left: 0 !important; }
-html[dir="rtl"] .ms-2 { margin-right: 0.5rem !important; margin-left: 0 !important; }
-html[dir="rtl"] .ms-3 { margin-right: 1rem !important; margin-left: 0 !important; }
-html[dir="rtl"] .ms-4 { margin-right: 1.5rem !important; margin-left: 0 !important; }
-html[dir="rtl"] .ms-5 { margin-right: 3rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-1 { margin-right: 0.5rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-2 { margin-right: 1rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-4 { margin-right: 2rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-5 { margin-right: 3.5rem !important; margin-left: 0 !important; }
 
 /* Enhanced Padding Fixes */
 html[dir="rtl"] .pe-1 { padding-left: 0.25rem !important; padding-right: 0 !important; }
@@ -194,4 +194,14 @@ html[dir="rtl"] .was-validated .form-control:invalid {
 
 html[dir="rtl"] .slide-in {
     animation: slideInRTL 0.3s ease-out;
+}
+
+/* RTL Fix: Always center stats section numbers and labels */
+html[dir="rtl"] .stat-card,
+html[dir="rtl"] .card-body,
+html[dir="rtl"] .display-4,
+html[dir="rtl"] .stat-number {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
