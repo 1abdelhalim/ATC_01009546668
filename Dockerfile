@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SETTINGS_MODULE=event_booking.settings_postgres
 ENV PYTHONPATH=/app
-ENV PORT=8000
+ENV PORT=80
 
 # Set work directory
 WORKDIR /app
@@ -54,14 +54,32 @@ tree /app\n\
 echo "Content of event_booking directory:"\n\
 ls -la /app/event_booking/\n\
 \n\
+echo "Python version:"\n\
+python --version\n\
+\n\
 echo "Python path:"\n\
 python -c "import sys; print(\\"Python path:\\", sys.path)"\n\
 \n\
-echo "Trying to import Django settings..."\n\
-python -c "import django; print(\\"Django version:\\", django.__version__); from django.conf import settings; print(\\"Settings module:\\", settings.SETTINGS_MODULE)"\n\
+echo "Content of settings_postgres.py:"\n\
+cat /app/event_booking/settings_postgres.py\n\
 \n\
-echo "Checking wsgi.py configuration:"\n\
+echo "Content of wsgi.py:"\n\
 cat /app/event_booking/wsgi.py\n\
+\n\
+echo "Installed Python packages:"\n\
+pip list\n\
+\n\
+echo "Checking Django installation:"\n\
+python -c "import django; print(django.__version__)"\n\
+\n\
+echo "Checking dj-database-url installation:"\n\
+python -c "import dj_database_url; print(dj_database_url.__version__)"\n\
+\n\
+echo "Trying direct settings import:"\n\
+python -c "import event_booking.settings_postgres as settings; print(\\"Settings imported successfully\\")"\n\
+\n\
+echo "Checking DATABASE_URL:"\n\
+echo "DATABASE_URL=$DATABASE_URL"\n\
 \n\
 echo "Extracting database connection info..."\n\
 DB_HOST=$(echo $DATABASE_URL | sed -n "s/.*@\\(.*\\)\\/.*/\\1/p")\n\
@@ -74,10 +92,10 @@ until pg_isready -h $DB_HOST -q; do\n\
 done\n\
 \n\
 echo "PostgreSQL is up - executing migrations"\n\
-DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py migrate --noinput || { echo "Migration failed"; exit 1; }\n\
+DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py migrate --noinput --traceback -v 3 || { echo "Migration failed"; exit 1; }\n\
 \n\
 echo "Collecting static files"\n\
-DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py collectstatic --noinput || { echo "Static files collection failed"; exit 1; }\n\
+DJANGO_SETTINGS_MODULE=event_booking.settings_postgres PYTHONPATH=/app python manage.py collectstatic --noinput --traceback -v 3 || { echo "Static files collection failed"; exit 1; }\n\
 \n\
 # Determine port - use PORT env var or fall back to 8000\n\
 if [ -z "$PORT" ]; then\n\
