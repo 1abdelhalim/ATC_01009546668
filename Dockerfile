@@ -23,6 +23,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Explicitly install dj-database-url
+RUN pip install --no-cache-dir dj-database-url==2.1.0
+
 # Copy project files
 COPY . .
 
@@ -36,6 +39,10 @@ RUN echo "Current directory structure:" && \
     test -f /app/entrypoint.py || (echo "ERROR: entrypoint.py not found" && exit 1) && \
     echo "entrypoint.py found successfully" && \
     python -m compileall /app/event_booking
+
+# Verify dj-database-url is installed
+RUN pip freeze | grep dj-database-url && \
+    python -c "import dj_database_url; print('dj-database-url version:', dj_database_url.__version__)"
 
 # Ensure the entrypoint script is executable
 RUN chmod +x /app/entrypoint.py
