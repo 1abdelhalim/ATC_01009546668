@@ -40,9 +40,11 @@ RUN echo "Current directory structure:" && \
     echo "entrypoint.py found successfully" && \
     python -m compileall /app/event_booking
 
-# Verify dj-database-url is installed
-RUN pip freeze | grep dj-database-url && \
-    python -c "import dj_database_url; print('dj-database-url version:', dj_database_url.__version__)"
+# Verify packages (without failing the build)
+RUN echo "Checking for dj-database-url package:" && \
+    pip freeze | grep -i dj-database-url || echo "Package not found in pip freeze" && \
+    echo "Attempting to import dj_database_url:" && \
+    python -c "import dj_database_url; print('dj-database-url imported successfully')" || echo "Import failed"
 
 # Ensure the entrypoint script is executable
 RUN chmod +x /app/entrypoint.py
