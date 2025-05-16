@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from . import views
 from django.contrib.auth import views as auth_views
+from django.http import HttpResponse
 
 # Non-localized URLs
 urlpatterns = [
@@ -45,6 +46,13 @@ urlpatterns += [
     path('password/reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
     path('password/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password/reset/complete/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
+]
+
+def health_check(request):
+    return HttpResponse("OK", status=200)
+
+urlpatterns += [
+    path('health/', health_check, name='health_check'),
 ]
 
 # Serve media files in development
