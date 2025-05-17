@@ -18,7 +18,7 @@ USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 
 # Update ALLOWED_HOSTS to include Azure internal IPs
-ALLOWED_HOSTS.extend(['169.254.131.1', '169.254.131.4'])
+ALLOWED_HOSTS.extend(['169.254.131.1', '169.254.131.2', '169.254.131.3', '169.254.131.4', '169.254.131.5'])
 
 # Production security settings
 SECURE_SSL_REDIRECT = True
