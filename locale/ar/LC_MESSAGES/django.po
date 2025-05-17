@@ -890,7 +890,7 @@ msgstr "تسجيل الدخول"
 
 #: users/templates/users/login.html:18
 msgid "Sign in to access your account"
-msgstr ""
+msgstr "تسجيل الدخول للوصول إلى حسابك"
 
 #: users/templates/users/login.html:34
 #: users/templates/users/profile_edit.html:60
@@ -899,11 +899,11 @@ msgstr "اسم المستخدم"
 
 #: users/templates/users/login.html:39
 msgid "Enter your username"
-msgstr ""
+msgstr "أدخل اسم المستخدم"
 
 #: users/templates/users/login.html:40
 msgid "Please enter your username."
-msgstr ""
+msgstr "يرجى إدخال اسم المستخدم."
 
 #: users/templates/users/login.html:46
 msgid "Password"
@@ -915,11 +915,11 @@ msgstr "نسيت كلمة المرور؟"
 
 #: users/templates/users/login.html:53
 msgid "Enter your password"
-msgstr ""
+msgstr "أدخل كلمة المرور"
 
 #: users/templates/users/login.html:57
 msgid "Please enter your password."
-msgstr ""
+msgstr "يرجى إدخال كلمة المرور."
 
 #: users/templates/users/login.html:63
 msgid "Remember me"
@@ -931,7 +931,7 @@ msgstr "ليس لديك حساب؟"
 
 #: users/templates/users/login.html:80
 msgid "Protected by industry-leading security"
-msgstr ""
+msgstr "محمي بأمان رائد في المجال"
 
 #: users/templates/users/password_change.html:10
 #: users/templates/users/profile_edit.html:87
