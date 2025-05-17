@@ -36,6 +36,17 @@ jobs:
         push: true
         tags: ${{ secrets.AZURE_REGISTRY }}/event-booking:latest
     
+    - name: Configure Web App Settings
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az webapp config appsettings set --resource-group evently --name ${{ secrets.AZURE_WEBAPP_NAME }} --settings \
+          DJANGO_SETTINGS_MODULE=event_booking.settings_production \
+          DEBUG=False \
+          ALLOWED_HOSTS=${{ secrets.AZURE_WEBAPP_NAME }}.azurewebsites.net \
+          SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+          DATABASE_URL="postgresql://pgadmin:${{ secrets.DB_PASSWORD }}@eventlypg.postgres.database.azure.com/flexibleserverdb?sslmode=require"
+    
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:

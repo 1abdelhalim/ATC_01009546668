@@ -59,7 +59,7 @@ if missing_packages:
             print(f"Failed to install {package}: {e}")
 
 # Set the Django settings module
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'event_booking.settings_postgres')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'event_booking.settings_production')
 print("Django settings module:", os.environ.get('DJANGO_SETTINGS_MODULE'))
 
 # Check if Database URL is set
@@ -74,7 +74,7 @@ if db_url:
 try:
     # First try direct import of settings
     print("Trying direct import of settings module...")
-    import event_booking.settings_postgres as direct_settings
+    import event_booking.settings_production as direct_settings
     print("Direct settings import successful")
 
     # Now try the Django way

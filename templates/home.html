@@ -48,9 +48,9 @@
                                 <input type="text" name="search" class="form-control border-start-0" placeholder="{% trans 'Search events...' %}" aria-label="{% trans 'Search events' %}">
                             {% else %}
                                 <input type="text" name="search" class="form-control border-end-0" placeholder="{% trans 'Search events...' %}" aria-label="{% trans 'Search events' %}">
-                                <span class="input-group-text bg-white border-start-0">
-                                    <i class="bi bi-search"></i>
-                                </span>
+                            <span class="input-group-text bg-white border-start-0">
+                                <i class="bi bi-search"></i>
+                            </span>
                             {% endif %}
                         </div>
                         <button type="submit" class="btn btn-primary px-4">
@@ -68,7 +68,7 @@
                     {% if LANGUAGE_CODE == 'ar' %}
                         <div class="position-absolute top-0 end-0 translate-middle-y rounded-circle bg-accent-color bg-opacity-25" style="width: 200px; height: 200px; z-index: -1;"></div>
                     {% else %}
-                        <div class="position-absolute top-0 start-0 translate-middle-y rounded-circle bg-accent-color bg-opacity-25" style="width: 200px; height: 200px; z-index: -1;"></div>
+                    <div class="position-absolute top-0 start-0 translate-middle-y rounded-circle bg-accent-color bg-opacity-25" style="width: 200px; height: 200px; z-index: -1;"></div>
                     {% endif %}
                     <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{% trans 'Events' %}" class="img-fluid rounded-4 shadow" style="transform: rotate(2deg);">
                 </div>
@@ -320,7 +320,7 @@
                             <small>{% trans "Innovation Hub" %}</small>
                             <i class="bi bi-geo-alt ms-2 text-primary"></i>
                         {% else %}
-                            <i class="bi bi-geo-alt me-2 text-primary"></i>
+                        <i class="bi bi-geo-alt me-2 text-primary"></i>
                             <small>{% trans "Innovation Hub" %}</small>
                         {% endif %}
                     </div>

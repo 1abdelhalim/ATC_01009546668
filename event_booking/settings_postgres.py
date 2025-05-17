@@ -211,7 +211,8 @@ else:
     USE_X_FORWARDED_PORT = False
 
 # Static files with WhiteNoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Using a more forgiving storage backend that doesn't require a manifest
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # CORS settings for development and production
 if DEBUG:
@@ -244,4 +245,12 @@ else:
         "http://localhost:8000",
         "http://127.0.0.1:8000",
     ]
-    CORS_ALLOW_CREDENTIALS = True 
+    CORS_ALLOW_CREDENTIALS = True
+
+# Import local development settings if running locally
+if os.environ.get('DJANGO_LOCAL_DEVELOPMENT') == 'True':
+    try:
+        from .local_settings import *
+        print("Successfully loaded local settings overrides")
+    except ImportError:
+        print("Local settings not found. Using default settings.") 

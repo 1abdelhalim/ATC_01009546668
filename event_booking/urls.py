@@ -72,6 +72,6 @@ urlpatterns += [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    
-    # Override the default error handlers in DEBUG mode
-    handler500 = 'event_booking.urls.handler500'
+
+# Make handler500 accessible at module level so it can be properly imported
+handler500 = handler500  # This registers the existing handler500 function at module level

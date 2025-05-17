@@ -4,7 +4,7 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=event_booking.settings_postgres
+ENV DJANGO_SETTINGS_MODULE=event_booking.settings_production
 ENV PYTHONPATH=/app
 ENV PORT=80
 
@@ -39,6 +39,14 @@ RUN echo "Current directory structure:" && \
     test -f /app/entrypoint.py || (echo "ERROR: entrypoint.py not found" && exit 1) && \
     echo "entrypoint.py found successfully" && \
     python -m compileall /app/event_booking
+
+# Collect static files
+RUN echo "Collecting static files..." && \
+    mkdir -p /app/staticfiles/img/sections && \
+    cp -f /app/static/img/sections/app-download.jpg /app/staticfiles/img/sections/ && \
+    python manage.py collectstatic --noinput --verbosity 1 && \
+    # Verify key static files exist
+    ls -la /app/staticfiles/img/sections/
 
 # Verify packages (without failing the build)
 RUN echo "Checking for dj-database-url package:" && \

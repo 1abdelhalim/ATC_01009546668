@@ -115,7 +115,7 @@ def create_basic_arabic_translations():
         "Event Title": "عنوان الفعالية",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.": "يمكنك الآن حجز الفعاليات بسهولة من خلال منصتنا.",
         "Event Location": "موقع الفعالية",
-        "What Our Users Say": "ماذا يقول مستخدمينا",
+        "What Our Users Say": "ماذا يقول مستخدمونا",
         "Discover why people love our platform": "اكتشف لماذا يحب الناس منصتنا",
         "\"This platform made finding local events so easy! I've discovered amazing concerts I would have missed otherwise.\"": "هذه المنصة جعلت العثور على الفعاليات المحلية سهلاً جداً! لقد اكتشفت حفلات موسيقية رائعة كنت سأفوتها لولا ذلك.",
         "John Doe": "محمد أحمد",

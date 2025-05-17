@@ -1,0 +1,26 @@
+[
+  {
+    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+    "value": "false"
+  },
+  {
+    "name": "DJANGO_SETTINGS_MODULE",
+    "value": "event_booking.settings_postgres"
+  },
+  {
+    "name": "DEBUG",
+    "value": "False"
+  },
+  {
+    "name": "ALLOWED_HOSTS",
+    "value": "evently-booking.azurewebsites.net"
+  },
+  {
+    "name": "DATABASE_URL",
+    "value": "postgresql://pgadmin:PgAdmin!2024@eventlypg.postgres.database.azure.com/flexibleserverdb?sslmode=require"
+  },
+  {
+    "name": "SECRET_KEY",
+    "value": "y+gfr3up82*$s47aodf*hbyo*1p79$7!m1ez6_vc4xo2q=2c-"
+  }
+] 

@@ -17,19 +17,18 @@
                 <div class="position-relative">
                     {% if booking.event.image %}
                     <img src="{{ booking.event.image.url }}" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
-                    {% elif booking.event.name == "Marathon Championships" %}
-                    <img src="/media/events/Marathon%20Championships.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
-                    {% elif booking.event.name == "Web Development Conference" %}
-                    <img src="/media/events/AI%20and%20Machine%20Learning%20Workshop.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
-                    {% elif booking.event.name == "Basketball Tournament" %}
-                    <img src="/media/events/Basketball%20Tournament.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
-                    {% elif booking.event.name == "Summer Sounds Music Festival" %}
-                    <img src="/media/events/Jazz%20Night.jpg" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
                     {% else %}
                     <img src="https://robohash.org/{{ booking.event.id }}?set=set2&size=600x400" class="card-img-top" alt="{{ booking.event.name }}" style="height: 180px; object-fit: cover;">
                     {% endif %}
+
                     <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
-                        <span class="badge bg-{{ booking.get_status_color }} px-3 py-2">{{ booking.get_status_display }}</span>
+                        {% if booking.status == 'CONFIRMED' %}
+                        <span class="badge bg-success px-2 py-1">{% trans "Confirmed" %}</span>
+                        {% elif booking.status == 'PENDING' %}
+                        <span class="badge bg-warning text-dark px-2 py-1">{% trans "Pending" %}</span>
+                        {% elif booking.status == 'CANCELLED' %}
+                        <span class="badge bg-danger px-2 py-1">{% trans "Cancelled" %}</span>
+                        {% endif %}
                     </div>
                     {% if booking.event.category %}
                     <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} m-2">

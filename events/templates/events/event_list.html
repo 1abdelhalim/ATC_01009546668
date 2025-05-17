@@ -160,21 +160,11 @@
                         <div class="position-relative">
                             {% if event.image %}
                             <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
-                            {% elif event.name == "Marathon Championships" %}
-                            <img src="/media/events/marathon-championships.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
-                            {% elif event.name == "Web Development Conference" %}
-                            <img src="/media/events/ai-and-machine-learning-workshop.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
-                            {% elif event.name == "Basketball Tournament" %}
-                            <img src="/media/events/basketball-tournament.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
-                            {% elif event.name == "Summer Sounds Music Festival" %}
-                            <img src="/media/events/jazz-night.jpg" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
                             {% else %}
                             <img src="https://robohash.org/{{ event.id }}?set=set2&size=600x400" class="card-img-top" alt="{{ event.name }}" style="height: 200px; object-fit: cover;">
                             {% endif %}
                             <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} m-2">
-                                {% if event.category %}
-                                <span class="badge bg-primary p-2 shadow-sm">{{ event.category.name }}</span>
-                                {% endif %}
+                                <span class="badge bg-primary px-2 py-1">{{ event.category.name }}</span>
                             </div>
                             <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} w-100 p-3 bg-gradient-dark text-white">
                                 <div class="d-flex justify-content-between align-items-center">
