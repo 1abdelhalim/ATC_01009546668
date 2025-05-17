@@ -62,6 +62,13 @@ if missing_packages:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'event_booking.settings_production')
 print("Django settings module:", os.environ.get('DJANGO_SETTINGS_MODULE'))
 
+# Set a default SECRET_KEY if not provided in environment
+if not os.environ.get('SECRET_KEY'):
+    print("WARNING: No SECRET_KEY environment variable found, using a temporary one for container startup")
+    os.environ['SECRET_KEY'] = 'temporary-secret-key-for-container-startup-only'
+    print("A temporary SECRET_KEY has been set. This is NOT secure for production use.")
+    print("Please set the SECRET_KEY environment variable in your deployment environment.")
+
 # Check if Database URL is set
 db_url = os.environ.get('DATABASE_URL')
 print(f"Database URL is {'set' if db_url else 'NOT SET'}")

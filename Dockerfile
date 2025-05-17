@@ -57,9 +57,6 @@ RUN echo "Checking for dj-database-url package:" && \
     echo "Attempting to import dj_database_url:" && \
     python -c "import dj_database_url; print('dj-database-url imported successfully')" || echo "Import failed"
 
-# Remove the build-time SECRET_KEY
-ENV SECRET_KEY=""
-
 # Ensure the entrypoint script is executable
 RUN chmod +x /app/entrypoint.py
 
