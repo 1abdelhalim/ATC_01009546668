@@ -73,6 +73,5 @@ class Event(models.Model):
     
     def is_booked_by_user(self, user):
         """Check if a specific user has booked this event"""
-        if not user.is_authenticated:
-            return False
-        return self.bookings.filter(user=user).exists()
+        from bookings.models import Booking
+        return Booking.is_event_booked_by_user(self, user)

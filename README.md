@@ -68,6 +68,9 @@ A full-stack event booking system built with Django, featuring a modern UI with 
    ```bash
    python manage.py runserver
    ```
+8. **Access the application:**
+   - Open your browser and navigate to: `http://127.0.0.1:8000`
+   - **⚠️ Important note:** For local development, Firefox is recommended. Chrome may experience HTTPS-related issues due to HSTS settings and attempt to redirect to HTTPS, which is not supported by the development server.
 
 ### Production Deployment (Azure)
 

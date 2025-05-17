@@ -9,13 +9,19 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Event, Category, Tag
+from bookings.models import Booking
 from django.utils import timezone
 import datetime
 from django.db.models import Count
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.db.models import Prefetch
 
 # Create your views here.
 
 # Template Views
+@method_decorator(cache_page(60 * 15), name='dispatch')  # Cache for 15 minutes
 class EventListView(ListView):
     template_name = 'events/event_list.html'
     model = Event
@@ -28,74 +34,83 @@ class EventListView(ListView):
         return super().dispatch(request, *args, **kwargs)
     
     def get_queryset(self):
-        queryset = Event.objects.filter(is_active=True).order_by('date')
+        cache_key = f'event_list_{self.request.GET.urlencode()}'
+        queryset = cache.get(cache_key)
         
-        # Search functionality
-        search_query = self.request.GET.get('search', '')
-        if search_query:
-            queryset = queryset.filter(
-                Q(name__icontains=search_query) |
-                Q(description__icontains=search_query) |
-                Q(venue__icontains=search_query)
-            )
-        
-        # Date filter
-        date_filter = self.request.GET.get('date_filter', '')
-        today = timezone.now().date()
-        if date_filter == 'today':
-            queryset = queryset.filter(date__date=today)
-        elif date_filter == 'tomorrow':
-            tomorrow = today + datetime.timedelta(days=1)
-            queryset = queryset.filter(date__date=tomorrow)
-        elif date_filter == 'weekend':
-            # Find the next Saturday and Sunday
-            days_until_saturday = (5 - today.weekday()) % 7
-            saturday = today + datetime.timedelta(days=days_until_saturday)
-            sunday = saturday + datetime.timedelta(days=1)
-            queryset = queryset.filter(date__date__range=[saturday, sunday])
-        elif date_filter == 'week':
-            # Find the end of the current week (next Sunday)
-            days_until_sunday = (6 - today.weekday()) % 7
-            end_of_week = today + datetime.timedelta(days=days_until_sunday)
-            queryset = queryset.filter(date__date__range=[today, end_of_week])
-        elif date_filter == 'month':
-            # Find the last day of the current month
-            next_month = today.replace(day=28) + datetime.timedelta(days=4)
-            end_of_month = next_month - datetime.timedelta(days=next_month.day)
-            queryset = queryset.filter(date__date__range=[today, end_of_month])
-        
-        # Category filter
-        category_slugs = self.request.GET.get('category', '').split(',')
-        if category_slugs and category_slugs[0]:
-            queryset = queryset.filter(category__slug__in=category_slugs)
-        
-        # Price filter
-        price_ranges = self.request.GET.get('price', '').split(',')
-        if price_ranges and price_ranges[0]:
-            price_q = Q()
-            for price_range in price_ranges:
-                if price_range == 'free':
-                    price_q |= Q(price=0)
-                elif price_range == '0-50':
-                    price_q |= Q(price__gt=0, price__lte=50)
-                elif price_range == '50-100':
-                    price_q |= Q(price__gt=50, price__lte=100)
-                elif price_range == '100-':
-                    price_q |= Q(price__gt=100)
-            queryset = queryset.filter(price_q)
-        
-        # Sort functionality
-        sort = self.request.GET.get('sort', '')
-        if sort == 'date':
-            queryset = queryset.order_by('date')
-        elif sort == 'price_asc':
-            queryset = queryset.order_by('price')
-        elif sort == 'price_desc':
-            queryset = queryset.order_by('-price')
-        elif sort == 'popularity':
-            # Sort by number of bookings (most popular first)
-            queryset = queryset.annotate(booking_count=Count('bookings')).order_by('-booking_count')
+        if queryset is None:
+            queryset = Event.objects.select_related('category', 'created_by').prefetch_related(
+                'tags',
+                Prefetch('bookings', queryset=Booking.objects.select_related('user'))
+            ).filter(is_active=True).order_by('date')
             
+            # Search functionality
+            search_query = self.request.GET.get('search', '')
+            if search_query:
+                queryset = queryset.filter(
+                    Q(name__icontains=search_query) |
+                    Q(description__icontains=search_query) |
+                    Q(venue__icontains=search_query)
+                )
+            
+            # Date filter
+            date_filter = self.request.GET.get('date_filter', '')
+            today = timezone.now().date()
+            if date_filter == 'today':
+                queryset = queryset.filter(date__date=today)
+            elif date_filter == 'tomorrow':
+                tomorrow = today + datetime.timedelta(days=1)
+                queryset = queryset.filter(date__date=tomorrow)
+            elif date_filter == 'weekend':
+                # Find the next Saturday and Sunday
+                days_until_saturday = (5 - today.weekday()) % 7
+                saturday = today + datetime.timedelta(days=days_until_saturday)
+                sunday = saturday + datetime.timedelta(days=1)
+                queryset = queryset.filter(date__date__range=[saturday, sunday])
+            elif date_filter == 'week':
+                # Find the end of the current week (next Sunday)
+                days_until_sunday = (6 - today.weekday()) % 7
+                end_of_week = today + datetime.timedelta(days=days_until_sunday)
+                queryset = queryset.filter(date__date__range=[today, end_of_week])
+            elif date_filter == 'month':
+                # Find the last day of the current month
+                next_month = today.replace(day=28) + datetime.timedelta(days=4)
+                end_of_month = next_month - datetime.timedelta(days=next_month.day)
+                queryset = queryset.filter(date__date__range=[today, end_of_month])
+            
+            # Category filter
+            category_slugs = self.request.GET.get('category', '').split(',')
+            if category_slugs and category_slugs[0]:
+                queryset = queryset.filter(category__slug__in=category_slugs)
+            
+            # Price filter
+            price_ranges = self.request.GET.get('price', '').split(',')
+            if price_ranges and price_ranges[0]:
+                price_q = Q()
+                for price_range in price_ranges:
+                    if price_range == 'free':
+                        price_q |= Q(price=0)
+                    elif price_range == '0-50':
+                        price_q |= Q(price__gt=0, price__lte=50)
+                    elif price_range == '50-100':
+                        price_q |= Q(price__gt=50, price__lte=100)
+                    elif price_range == '100-':
+                        price_q |= Q(price__gt=100)
+                queryset = queryset.filter(price_q)
+            
+            # Sort functionality
+            sort = self.request.GET.get('sort', '')
+            if sort == 'date':
+                queryset = queryset.order_by('date')
+            elif sort == 'price_asc':
+                queryset = queryset.order_by('price')
+            elif sort == 'price_desc':
+                queryset = queryset.order_by('-price')
+            elif sort == 'popularity':
+                # Sort by number of bookings (most popular first)
+                queryset = queryset.annotate(booking_count=Count('bookings')).order_by('-booking_count')
+            
+            cache.set(cache_key, queryset, timeout=60 * 15)  # Cache for 15 minutes
+        
         return queryset
     
     def get_context_data(self, **kwargs):
@@ -113,21 +128,40 @@ class EventListView(ListView):
                 
         return context
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class EventDetailView(DetailView):
     template_name = 'events/event_detail.html'
     model = Event
     context_object_name = 'event'
     
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+            
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        cache_key = f'event_detail_{slug}'
+        event = cache.get(cache_key)
+        
+        if event is None:
+            queryset = queryset.select_related('category', 'created_by').prefetch_related(
+                'tags',
+                Prefetch('bookings', queryset=Booking.objects.select_related('user'))
+            )
+            event = super().get_object(queryset=queryset)
+            cache.set(cache_key, event, timeout=60 * 15)
+            
+        return event
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        event = self.object
+        
         # Check if user has booked this event
         if self.request.user.is_authenticated:
-            event = self.object
             event.is_booked_by_user = event.is_booked_by_user(self.request.user)
         
-        # Get similar events
-        event = self.object
-        similar_events = Event.objects.filter(
+        # Get similar events with optimized query
+        similar_events = Event.objects.select_related('category').prefetch_related('tags').filter(
             Q(category=event.category) | Q(tags__in=event.tags.all())
         ).exclude(id=event.id).distinct()[:3]
         

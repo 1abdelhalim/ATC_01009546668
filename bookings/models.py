@@ -53,3 +53,10 @@ class Booking(models.Model):
     @property
     def is_confirmed(self):
         return self.status == self.Status.CONFIRMED
+    
+    @classmethod
+    def is_event_booked_by_user(cls, event, user):
+        """Check if a specific user has booked this event"""
+        if not user.is_authenticated:
+            return False
+        return cls.objects.filter(event=event, user=user).exists()
