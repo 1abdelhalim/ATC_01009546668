@@ -4,6 +4,7 @@
 
 A full-stack event booking system built with Django, featuring a modern UI with HTMX and responsive design.
 
+[Home Page](home.png)
 ## 🌟 Features
 
 ### Public Features
