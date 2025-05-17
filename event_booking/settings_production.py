@@ -4,10 +4,16 @@ Inherits from settings_postgres.py but overrides critical settings for productio
 """
 
 import os
+from django.core.exceptions import ImproperlyConfigured
 from .settings_postgres import *
 
 # Force debug to be False in production
 DEBUG = False
+
+# Get SECRET_KEY from environment variable
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY:
+    raise ImproperlyConfigured("SECRET_KEY environment variable is required but not set")
 
 # Force the correct static files storage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
