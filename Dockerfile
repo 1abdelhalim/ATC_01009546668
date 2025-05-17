@@ -40,6 +40,9 @@ RUN echo "Current directory structure:" && \
     echo "entrypoint.py found successfully" && \
     python -m compileall /app/event_booking
 
+# Set a build-time SECRET_KEY for collectstatic (not used at runtime)
+ENV SECRET_KEY="build-time-secret-key-for-collectstatic-only"
+
 # Collect static files
 RUN echo "Collecting static files..." && \
     mkdir -p /app/staticfiles/img/sections && \
@@ -53,6 +56,9 @@ RUN echo "Checking for dj-database-url package:" && \
     pip freeze | grep -i dj-database-url || echo "Package not found in pip freeze" && \
     echo "Attempting to import dj_database_url:" && \
     python -c "import dj_database_url; print('dj-database-url imported successfully')" || echo "Import failed"
+
+# Remove the build-time SECRET_KEY
+ENV SECRET_KEY=""
 
 # Ensure the entrypoint script is executable
 RUN chmod +x /app/entrypoint.py
