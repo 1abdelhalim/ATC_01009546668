@@ -3,6 +3,7 @@ Production-specific settings for event_booking project.
 Inherits from settings_postgres.py but overrides critical settings for production.
 """
 
+import os
 from .settings_postgres import *
 
 # Force debug to be False in production
@@ -22,4 +23,22 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY' 
+X_FRAME_OPTIONS = 'DENY'
+
+# Database configuration - Check for individual DB environment variables if DATABASE_URL is not set
+if not os.environ.get('DATABASE_URL') and os.environ.get('DB_NAME'):
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.postgresql'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT', '5432'),
+            'OPTIONS': {
+                'sslmode': 'require' if os.environ.get('DATABASE_USE_SSL', 'True').lower() == 'true' else 'prefer',
+            },
+            'CONN_MAX_AGE': 60,
+            'CONN_HEALTH_CHECKS': True,
+        }
+    } 
