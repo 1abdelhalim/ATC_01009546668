@@ -194,51 +194,57 @@
                 <!-- Event Card -->
                 <div class="event-card card h-100 hover-lift">
                     <div class="event-image-wrapper position-relative">
-                        <img src="{{ event.image.url|default:'static/img/sample-event.jpg' }}" class="card-img-top event-image" alt="{{ event.name }}">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" class="card-img-top event-image" alt="{{ event.name }}">
+                        {% else %}
+                            <img src="https://source.unsplash.com/random/800x600/?{{ event.category.name|lower }}" class="card-img-top event-image" alt="{{ event.name }}">
+                        {% endif %}
                         
                         <!-- Category badge -->
                         <div class="position-absolute top-0 {% if LANGUAGE_CODE == 'ar' %}start-0{% else %}end-0{% endif %} p-3">
-                            <span class="badge bg-primary rounded-pill">{{ event.category.name }}</span>
+                            <span class="badge bg-primary">{{ event.category.name }}</span>
                         </div>
                         
                         <!-- Date badge -->
-                        <div class="position-absolute bottom-0 {% if LANGUAGE_CODE == 'ar' %}end-0{% else %}start-0{% endif %} p-3">
-                            <div class="event-date-badge">
-                                <span class="event-month">{{ event.date|date:"M" }}</span>
-                                <span class="event-day">{{ event.date|date:"d" }}</span>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-dark">
+                            <div class="d-flex justify-content-between align-items-center text-white">
+                                <div>
+                                    <i class="bi bi-calendar me-2"></i>
+                                    {{ event.date|date:"M d, Y" }}
+                                </div>
+                                <div>
+                                    <i class="bi bi-clock me-2"></i>
+                                    {{ event.date|date:"g:i A" }}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="card-body">
-                        <h3 class="card-title h5 mb-2">{{ event.name }}</h3>
-                        <p class="card-text text-truncate-2 text-muted mb-3">{{ event.description|truncatewords:15 }}</p>
+                        <h5 class="card-title mb-3">{{ event.name }}</h5>
+                        <p class="card-text text-muted mb-3">{{ event.description|truncatewords:20 }}</p>
                         
-                        <div class="event-meta d-flex justify-content-between align-items-center mb-3">
-                            <div class="event-location">
-                                <i class="bi bi-geo-alt me-1"></i>
-                                <span>{{ event.venue }}</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="venue">
+                                <i class="bi bi-geo-alt me-2"></i>
+                                <small class="text-muted">{{ event.venue }}</small>
                             </div>
-                            <div class="event-price">
-                                <span class="text-primary fw-bold">${{ event.price }}</span>
+                            <div class="price">
+                                <span class="fw-bold">${{ event.price }}</span>
                             </div>
                         </div>
-                        
-                        <a href="{% url 'events:detail' event.slug %}" class="btn btn-outline-primary w-100">
+                    </div>
+                    
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="{% url 'events:detail' event.slug %}" class="btn btn-primary w-100">
                             {% trans "View Details" %}
                         </a>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center py-5">
-                <div class="empty-state">
-                    <div class="empty-state-icon mb-4">
-                        <i class="bi bi-calendar-x"></i>
-                    </div>
-                    <h3 class="empty-state-title h4 mb-3">{% trans "No Featured Events" %}</h3>
-                    <p class="empty-state-message text-muted mb-4">{% trans "We don't have any featured events at the moment. Please check back later." %}</p>
-                    <a href="{% url 'events:list' %}" class="btn btn-primary">{% trans "Browse All Events" %}</a>
-                </div>
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans "No featured events available at the moment." %}</p>
             </div>
             {% endfor %}
         </div>
