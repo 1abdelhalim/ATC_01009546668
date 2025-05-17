@@ -21,16 +21,30 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from . import views
 from django.contrib.auth import views as auth_views
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+import traceback
+import sys
 
 # Azure health check endpoint
 def health_check(request):
     return HttpResponse("OK", status=200)
 
+# Custom error handlers
+def handler500(request, *args, **kwargs):
+    """Custom 500 error handler that returns error details in DEBUG mode"""
+    type_, value, tb = sys.exc_info()
+    error_info = {
+        'error_type': str(type_.__name__),
+        'error_value': str(value),
+        'traceback': traceback.format_exception(type_, value, tb)
+    }
+    return JsonResponse(error_info, status=500)
+
 # Non-localized URLs
 urlpatterns = [
     path('robots933456.txt', health_check, name='azure_health_check'),  # Azure health check endpoint
     path('health/', health_check, name='health_check'),  # Generic health check
+    path('diagnostic/', views.diagnostic, name='diagnostic'),  # Diagnostic endpoint for troubleshooting
     path('i18n/', include('django.conf.urls.i18n')),  # For language switching
     path('api/', include('core.api_urls')),  # API endpoints don't need localization
     path('__reload__/', include('django_browser_reload.urls')),
@@ -58,3 +72,6 @@ urlpatterns += [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
+    # Override the default error handlers in DEBUG mode
+    handler500 = 'event_booking.urls.handler500'
