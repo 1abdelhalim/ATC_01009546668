@@ -3,9 +3,9 @@
 ## Environment Variables
 Make sure the following environment variables are set in Azure App Service Configuration:
 
-- `DEBUG`: Set to `False` for production
+- `DEBUG`: Set to `True` temporarily to get detailed error messages
 - `SECRET_KEY`: Set to a secure random string (different from development)
-- `ALLOWED_HOSTS`: Set to your domain names (e.g., `evently-booking.azurewebsites.net`)
+- `ALLOWED_HOSTS`: Set to your domain names (e.g., `evently-booking.azurewebsites.net,169.254.131.1`)
 - `DATABASE_URL`: Set to your PostgreSQL connection string
 
 ## SSL/HTTPS Configuration
@@ -18,6 +18,27 @@ Make sure the following environment variables are set in Azure App Service Confi
 2. Set startup command to: `gunicorn --bind=0.0.0.0 --timeout 600 event_booking.wsgi`
 3. Turn on "Always On" feature to prevent the app from unloading
 4. Set SCM_DO_BUILD_DURING_DEPLOYMENT to true
+5. **Important**: Add health check endpoint in the application to handle Azure's health probe (/robots933456.txt)
+
+## Fixing Azure Health Check Issues
+The 500 error is likely caused by Azure's health check system failing. To fix:
+
+1. Add the following to `urls.py` to handle the health check endpoint:
+   ```python
+   from django.http import HttpResponse
+   
+   def health_check(request):
+       return HttpResponse("OK")
+   
+   urlpatterns = [
+       # Add this at the top of your urlpatterns
+       path('robots933456.txt', health_check, name='health_check'),
+       
+       # ... your existing paths
+   ]
+   ```
+
+2. Make sure `169.254.131.1` (Azure's health check IP) is included in ALLOWED_HOSTS
 
 ## Troubleshooting 500 Server Error
 If you're still getting a 500 error after deployment:

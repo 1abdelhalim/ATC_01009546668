@@ -16,7 +16,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-h7l#fnj6+_)e@!wq5#z4r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'evently-booking.azurewebsites.net,localhost,127.0.0.1').split(',')
+# Azure's health check IP must be included in ALLOWED_HOSTS
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'evently-booking.azurewebsites.net,localhost,127.0.0.1,169.254.131.1').split(',')
 
 # Application definition
 INSTALLED_APPS = [

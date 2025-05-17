@@ -23,8 +23,14 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 
+# Azure health check endpoint
+def health_check(request):
+    return HttpResponse("OK", status=200)
+
 # Non-localized URLs
 urlpatterns = [
+    path('robots933456.txt', health_check, name='azure_health_check'),  # Azure health check endpoint
+    path('health/', health_check, name='health_check'),  # Generic health check
     path('i18n/', include('django.conf.urls.i18n')),  # For language switching
     path('api/', include('core.api_urls')),  # API endpoints don't need localization
     path('__reload__/', include('django_browser_reload.urls')),
@@ -46,13 +52,6 @@ urlpatterns += [
     path('password/reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
     path('password/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password/reset/complete/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
-]
-
-def health_check(request):
-    return HttpResponse("OK", status=200)
-
-urlpatterns += [
-    path('health/', health_check, name='health_check'),
 ]
 
 # Serve media files in development
